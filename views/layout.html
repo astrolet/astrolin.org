@@ -1,0 +1,37 @@
+!!! 5
+html(lang="en")
+  head
+    meta(charset="utf-8")
+
+    - var prefix = "Astro"
+    - var chinese = "林"
+    - if (typeof headest == "undefined")
+      - headest = prefix.toUpperCase()
+
+    - var entitled = prefix + " " + chinese
+    - if (locals.title)
+      - entitled += ' ' + title
+    - // else + route?
+    title= entitled
+
+    link(rel="icon", href="/favicon.ico")
+
+    style
+      .wf-loading { visibility: hidden }
+
+    script(src="http://use.typekit.com/loe7yzm.js")
+    script(type="text/javascript")
+      try{Typekit.load();}catch(e){}
+
+    link(rel="stylesheet", href="/css/screen.css", media="screen", type="text/css")
+
+  body#whole
+    center
+      #header
+        - if (typeof forehead == "undefined")
+          - forehead = "LIN"
+        h1
+          != headest + "&nbsp;"
+          a(href="/")= chinese
+          != "&nbsp;" + forehead
+      #torso!= body

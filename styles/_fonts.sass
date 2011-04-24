@@ -1,0 +1,27 @@
+$em_ratio: 16px / 1em
+
+$sans-fonts: "Helvetica Neue", Arial, Helvetica, sans-serif
+$serif-fonts: Cambria, Georgia, serif
+$monospace-fonts: "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, Courier, monospace, sans-serif
+
+// a safety (insurance):
+$fonts-tail: $sans-fonts
+
+$fonts-logo: "bd-jupiter-stencil-1", "bd-jupiter-stencil-2"
+$fonts-copy: "galette-1", "galette-2"
+$fonts-menu: "bd-jupiter-1", "bd-jupiter-2"
+$fonts-text: "apertura-1", "apertura-2"
+$fonts-more: "apertura-condensed-1", "apertura-condensed-2"
+$fonts-mono: "inconsolata-1", "inconsolata-2"
+
+=font-vars($family)
+  font-family: $family, $fonts-tail
+
+.fonts-menu
+  +font-vars($fonts-menu)
+.fonts-text
+  +font-vars($fonts-text)
+.fonts-more
+  +font-vars($fonts-more)
+.fonts-mono
+  +font-vars($fonts-mono)
