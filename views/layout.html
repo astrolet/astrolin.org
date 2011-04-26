@@ -2,6 +2,7 @@
 html(lang="en")
   head
     meta(charset="utf-8")
+    link(rel="icon", href="/favicon.ico")
 
     - var prefix = "Astro"
     - var chinese = "林"
@@ -12,9 +13,12 @@ html(lang="en")
     - if (locals.title)
       - entitled += ' ' + title
     - // else + route?
+
     title= entitled
 
-    link(rel="icon", href="/favicon.ico")
+    -// meta(name="description", content="Astrolin: astrology language interface, Astrolet's opensource coffeescript / node.js ephemeris.")
+    <meta name="description" content="Astrolin: astrology language interface, Astrolet's opensource coffeescript / node.js ephemeris.">
+    meta(name="keywords", content="astrology,astrolet,opensource,ephemeris,programming,coffeescript,node.js")
 
     style
       .wf-loading { visibility: hidden }
