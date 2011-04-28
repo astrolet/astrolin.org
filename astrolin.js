@@ -14,6 +14,9 @@
       lin: {
         tracker: "265847"
       },
+      precious: {
+        tracker: false
+      },
       sin: {
         tracker: "203533",
         package: "gravity"

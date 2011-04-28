@@ -16,11 +16,14 @@ app.helpers
   projects:
     lin:
       tracker: "265847"
+    precious:
+      tracker: false
     sin:
       tracker: "203533"
       package: "gravity"
     eden:
       tracker: "203533"
+
 
   linkage: (project, details) ->
     if details is undefined
