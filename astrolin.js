@@ -11,6 +11,9 @@
       return _.keys(a);
     },
     projects: {
+      eden: {
+        tracker: "203533"
+      },
       lin: {
         tracker: "265847"
       },
@@ -20,9 +23,6 @@
       sin: {
         tracker: "203533",
         package: "gravity"
-      },
-      eden: {
-        tracker: "203533"
       }
     },
     linkage: function(project, details) {

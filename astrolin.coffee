@@ -14,6 +14,8 @@ app.helpers
 
   # = key, false (hides it), or full url
   projects:
+    eden:
+      tracker: "203533"
     lin:
       tracker: "265847"
     precious:
@@ -21,8 +23,6 @@ app.helpers
     sin:
       tracker: "203533"
       package: "gravity"
-    eden:
-      tracker: "203533"
 
 
   linkage: (project, details) ->
