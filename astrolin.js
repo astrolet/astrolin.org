@@ -18,10 +18,12 @@
         tracker: "265847"
       },
       precious: {
+        docs: false,
         tracker: false
       },
       sin: {
         tracker: "203533",
+        docs: "sin#readme",
         package: "gravity"
       }
     },
@@ -36,11 +38,12 @@
       defaults = {
         package: project,
         source: project,
-        issues: "" + project + "/issues"
+        issues: "" + project + "/issues",
+        docs: "" + project + "/wiki"
       };
       details = _.defaults(details, defaults);
       links = {};
-      _ref = ["source", "tracker", "package"];
+      _ref = ["docs", "source", "tracker", "package"];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         key = _ref[_i];
         if (details[key] !== false) {
@@ -56,6 +59,7 @@
                 break;
               case "source":
               case "issues":
+              case "docs":
                 links[key] = "" + github + details[key];
             }
           }

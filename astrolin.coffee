@@ -19,9 +19,11 @@ app.helpers
     lin:
       tracker: "265847"
     precious:
+      docs: false
       tracker: false
     sin:
       tracker: "203533"
+      docs: "sin#readme"
       package: "gravity"
 
 
@@ -34,10 +36,11 @@ app.helpers
       package: project
       source: project
       issues: "#{project}/issues"
+      docs: "#{project}/wiki"
     details = _.defaults(details, defaults)
     links = {}
 
-    for key in ["source", "tracker", "package"]
+    for key in ["docs", "source", "tracker", "package"]
       if details[key] isnt false
         if details[key].match /^http/
           links[key] = details[key]
@@ -47,7 +50,7 @@ app.helpers
               links[key] = "http://search.npmjs.org/#/#{details[key]}"
             when "tracker"
               links[key] = "https://www.pivotaltracker.com/projects/#{details[key]}"
-            when "source", "issues"
+            when "source", "issues", "docs"
               links[key] = "#{github}#{details[key]}"
     links
 
