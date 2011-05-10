@@ -18,28 +18,27 @@
         tracker: "265847"
       },
       precious: {
-        docs: false,
-        tracker: false
+        tracker: "203533"
       },
       sin: {
         tracker: "203533",
-        docs: "sin#readme",
         package: "gravity"
       }
     },
     linkage: function(project, details) {
-      var defaults, github, key, links, _i, _len, _ref;
+      var defaults, ghpages, github, key, links, _i, _len, _ref;
       if (details === void 0) {
         return {
           "project's unknown": "/"
         };
       }
       github = "https://github.com/astrolet/";
+      ghpages = "http://astrolet.github.com/";
       defaults = {
         package: project,
         source: project,
         issues: "" + project + "/issues",
-        docs: "" + project + "/wiki"
+        docs: "" + project
       };
       details = _.defaults(details, defaults);
       links = {};
@@ -59,8 +58,10 @@
                 break;
               case "source":
               case "issues":
-              case "docs":
                 links[key] = "" + github + details[key];
+                break;
+              case "docs":
+                links[key] = "" + ghpages + details[key];
             }
           }
         }
