@@ -1,0 +1,34 @@
+.DS_Store
+log
+*~
+.#*
+.hgignore
+.hg/*
+.svn/*
+
+docs
+pages
+
+# Node
+node_modules
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+
+pids
+logs
+results
+
+# Tools
+.sass-cache
+.settings.xml
+web/public/watch.*
+
+# Duostack
+mnt
+tmp

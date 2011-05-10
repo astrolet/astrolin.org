@@ -1,0 +1,38 @@
+{ "name": "astrolin"
+, "description": "astrolet's open astrology projects linking"
+, "keywords": [ "astrology", "aslrolet", "opensource" ]
+, "version": "0.0.1"
+, "homepage": "http://astrolin.com"
+, "repository":
+  { "type": "git"
+  , "url": "git://github.com/astrolet/astrolin.git"
+  }
+, "bugs":
+  { "mail": "support@astrolet.net"
+  , "web" : "https://github.com/astrolet/astrolin/issues"
+  }
+, "author": "Orlin M Bozhinov <orlin@astrolet.net> (http://soundsapiens.com)"
+, "contributors": []
+, "directories": { "web": "./web" }
+, "main": "server"
+, "dependencies":
+  { "coffee-script": "*"
+  , "express": "~2.2.2"
+  , "jade": "~0.10.4"
+  , "massagist": "*"
+  }
+, "devDependencies":
+  { "node-dev": "*"
+  , "node-inspector": "*"
+  , "async": "*"
+  , "vows": "*"
+  }
+, "scripts": { "test": "cake -s test" }
+, "os" : [ "aix", "freebsd", "linux", "macos", "solaris" ]
+, "engines" : { "node" : "0.4" }
+, "licenses":
+  [ { "type": "Unlicense"
+    , "url" : "http://unlicense.org/"
+    }
+  ]
+}
