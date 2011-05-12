@@ -26,7 +26,7 @@ app.helpers
     astrolin:
       tracker: "265847"
 
-
+  # Project links
   linkage: (project, details) ->
     if details is undefined
       return { "project's unknown": "/" }
@@ -57,6 +57,15 @@ app.helpers
               links[key] = "#{ghpages}#{details[key]}"
     links
 
+  # Category links across projects (a little bit sloppy, but no big deal)
+  catLinks: (category) ->
+    links = {}
+    for project, details of this.projects
+      all = this.linkage(project, details)
+      links[project] = all[category] if all[category]?
+    links
+
+
 # Configuration
 app.configure ->
   node_server = path.normalize __dirname
@@ -81,6 +90,14 @@ app.get "/to/:project?", (req, res, next) ->
                         , headest: ""
                         , project: req.params.project
                         , forehead: "<br/>" + req.params.project.toUpperCase()
+                        }
+
+# Projects per category
+app.get "/cat/:category", (req, res, next) ->
+  res.render "category", { title: req.params.category
+                        , headest: ""
+                        , category: req.params.category
+                        , forehead: "<br/>" + req.params.category.toLowerCase()
                         }
 
 # Catch and log any exceptions that may bubble to the top.
