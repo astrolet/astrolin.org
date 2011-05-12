@@ -6,5 +6,9 @@ p#copy
 br
 p
     - each project in keys(projects)
-      h2.project
-        a(href= "/to/" + project) &nbsp;#{project.toUpperCase()}&nbsp;
+      - if(project != "astrolin")
+        h2.project
+          a(href= "/to/" + project) &nbsp;#{project.toUpperCase()}&nbsp;
+
+  h2.project.bottom
+    a(href= "https://github.com/astrolet/astrolin/wiki") wiki

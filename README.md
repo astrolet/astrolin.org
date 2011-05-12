@@ -11,6 +11,8 @@ astrolin -- Astrolet's open astrology projects linking
 
     node server.js
 
+Served as [astrolin.com/](http://www.astrolin.com).
+Also, [a wiki](https://github.com/astrolet/astrolin/wiki) for all.
 
 ## INSTALL
 

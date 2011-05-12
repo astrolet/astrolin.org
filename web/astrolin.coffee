@@ -23,6 +23,8 @@ app.helpers
     sin:
       tracker: "203533"
       package: "gravity"
+    astrolin:
+      tracker: "265847"
 
 
   linkage: (project, details) ->
