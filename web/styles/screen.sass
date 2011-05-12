@@ -29,6 +29,31 @@ h1
 #cats
   padding-top: 3px
 
+$cat-v-pad: 3px
+$cat-h-pad: 9px
+$cat-space: 4px
+
+a
+  +hover-link
+  color: indigo
+
+a.cat
+  background-color: white
+  border: 1px solid orange
+  +border-radius(5px)
+  padding:
+    top: $cat-v-pad
+    bottom: $cat-v-pad
+    left: $cat-h-pad
+    right: $cat-h-pad
+  margin:
+    left: $cat-space
+    right: $cat-space
+  +unstyled-link
+  +link-colors(darkgreen, indigo)
+  &:hover
+    border: 1px solid indigo
+
 .project, .somewhere
   +font-vars($fonts-menu)
 
@@ -36,12 +61,9 @@ h1
   height: 1.5em
 
 #bottom
-  padding-top: 8px
+  padding-top: 12px
 
 #whole
-  a
-    +hover-link
-    color: indigo
   color: $color_txt
   +font-vars($fonts-text)
   background-color: $color_bg

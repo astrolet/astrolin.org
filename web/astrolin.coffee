@@ -12,6 +12,8 @@ app.helpers
   keys: (a) ->
     _.keys(a)
 
+  cats: ["docs", "source", "tracker", "package"]
+
   # = key, false (hides it), or full url
   projects:
     eden:
@@ -41,7 +43,7 @@ app.helpers
     details = _.defaults(details, defaults)
     links = {}
 
-    for key in ["docs", "source", "tracker", "package"]
+    for key in this.cats
       if details[key] isnt false
         if details[key].match /^http/
           links[key] = details[key]

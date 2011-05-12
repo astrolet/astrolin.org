@@ -11,4 +11,6 @@ p
           a(href= "/to/" + project) &nbsp;#{project.toUpperCase()}&nbsp;
 
   h2#bottom.project
-    a(href= "https://github.com/astrolet/astrolin/wiki") wiki
+    - each cat in cats
+      a.cat(href="/cat/" + cat) #{cat}
+    a.cat(href= "https://github.com/astrolet/astrolin/wiki") wiki
