@@ -28,6 +28,9 @@ app.helpers
     astrolin:
       tracker: "265847"
 
+  # TODO: how to call this w/o a view
+  projectKeys: -> JSON.stringify { projects: _.keys this.projects }
+
   # Project links
   linkage: (project, details) ->
     if details is undefined
@@ -84,6 +87,11 @@ app.configure ->
 # Home page
 app.get "/", (req, res, next) ->
   res.render "index", { title: "Welcome" }
+
+# Projects JSON
+app.get "/projects", (req, res, next) ->
+  res.contentType('application/json')
+  res.render("projects", {layout: false})
 
 # Project page
 app.get "/to/:project?", (req, res, next) ->
