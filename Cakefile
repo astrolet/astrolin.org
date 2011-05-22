@@ -26,7 +26,7 @@ option '-v', '--verbose', 'Verbose vows when necessary'
 
 task 'test', 'Test the app', (options) ->
 
-  args = []
+  args = [ "test/routes.coffee" ]
   args.unshift '--spec'     if options.spec
   args.unshift '--verbose'  if options.verbose
 

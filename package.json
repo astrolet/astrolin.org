@@ -26,6 +26,7 @@
   , "node-inspector": "*"
   , "async": "*"
   , "vows": "*"
+  , "api-easy": "*"
   }
 , "scripts": { "test": "cake -s test" }
 , "os" : [ "aix", "freebsd", "linux", "macos", "solaris" ]
