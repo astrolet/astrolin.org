@@ -1,5 +1,5 @@
-astrolin -- Astrolet's open astrology projects linking
-======================================================
+# astrolin -- astro-let's do open links
+
 
 ## DESCRIPTION
 
