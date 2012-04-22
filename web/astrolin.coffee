@@ -20,6 +20,8 @@ app.helpers
       tracker: "203533"
     lin:
       tracker: "265847"
+    upon:
+      tracker: "265847"
     precious:
       tracker: "203533"
     sin:
@@ -34,7 +36,7 @@ app.helpers
   # Project links
   linkage: (project, details) ->
     if details is undefined
-      return { "project's unknown": "/" }
+      return { "none such showing yet": "http://github.com/astrolet" }
 
     github = "https://github.com/astrolet/"
     ghpages = "http://astrolet.github.com/"
