@@ -28,7 +28,7 @@
   , "vows": "*"
   , "api-easy": "*"
   }
-, "scripts": { "test": "cake -s test" }
+, "scripts": { "test": "cake test" }
 , "os" : [ "aix", "freebsd", "linux", "macos", "solaris" ]
 , "engines" : { "node" : "0.6.x", "npm": "1.1.x" }
 , "licenses":
