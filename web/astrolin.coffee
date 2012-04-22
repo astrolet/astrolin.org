@@ -1,7 +1,7 @@
+_    = require 'underscore'
 util = require 'util'
 path = require 'path'
 jade = require 'jade'
-_    = require('massagist')._
 
 # Express app
 express = require 'express'

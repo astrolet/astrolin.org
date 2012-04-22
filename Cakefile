@@ -1,5 +1,3 @@
-require.paths.unshift "#{__dirname}/node_modules"
-
 {exec, spawn} = require 'child_process'
 {series, parallel} = require 'async'
 
