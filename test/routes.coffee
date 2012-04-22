@@ -1,9 +1,9 @@
+assert  = require('assert')
 APIeasy = require('api-easy')
-assert = require('assert')
 
-astrolet = APIeasy.describe('Astrolin');
+astrolin = APIeasy.describe 'Astrolin'
 
-(astrolet.use "localhost", 8001).setHeader('Content-Type', 'application/json')
+(astrolin.use "localhost", 8001).setHeader('Content-Type', 'application/json')
 
   .get("/").expect(200)
   .get("/cat/source").expect(200) # a category

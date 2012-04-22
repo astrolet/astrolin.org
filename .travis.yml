@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - 0.6
+branches:
+only:
+  - master
+  - active
+before_script: PORT=8001 node server.js
+
