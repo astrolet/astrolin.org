@@ -1,7 +1,8 @@
-# astrolin -- astro-let's do open links
+# [![Build Status](https://secure.travis-ci.org/astrolet/astrolin.png)](http://travis-ci.org/astrolet/astrolin)
+# astrolin -- astro-let's do open links / source
 
 
-## DESCRIPTION
+## SYNOPSIS
 
     grow astrology like the woods
     grow stronger with each tree

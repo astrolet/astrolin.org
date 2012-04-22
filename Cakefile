@@ -1,5 +1,3 @@
-require.paths.unshift "#{__dirname}/node_modules"
-
 {exec, spawn} = require 'child_process'
 {series, parallel} = require 'async'
 
@@ -8,7 +6,7 @@ print = (data) -> console.log data.toString().trim()
 
 handleError = (err) ->
   if err
-    console.log "\n\033[1;36m=>\033[1;37m Remember you need to `npm install` the package.json devDependencies and also `bundle install`.\033[0;37m\n"
+    console.log "\nUnexpected error!\nHave you done `npm install`?\n"
     console.log err.stack
 
 sh = (command) -> (k) -> exec command, k

@@ -1,5 +1,5 @@
 { "name": "astrolin"
-, "description": "astro-let's do open links"
+, "description": "astro-let's do open links / source"
 , "keywords": [ "astrology", "aslrolet", "opensource", "resource" ]
 , "version": "0.0.1-0"
 , "homepage": "http://astrolin.com"
@@ -9,7 +9,7 @@
   }
 , "bugs":
   { "mail": "support@astrolet.net"
-  , "web" : "https://github.com/astrolet/astrolin/issues"
+  , "url" : "https://www.pivotaltracker.com/projects/265847"
   }
 , "author": "Orlin M Bozhinov <orlin@astrolet.net> (http://soundsapiens.com)"
 , "contributors": []
@@ -17,9 +17,9 @@
 , "main": "server"
 , "dependencies":
   { "coffee-script": "*"
-  , "express": "~2.2.2"
-  , "jade": "~0.10.4"
-  , "massagist": "*"
+  , "underscore": "*"
+  , "express": "*"
+  , "jade": "*"
   }
 , "devDependencies":
   { "node-dev": "*"
@@ -28,9 +28,9 @@
   , "vows": "*"
   , "api-easy": "*"
   }
-, "scripts": { "test": "cake -s test" }
+, "scripts": { "test": "cake test" }
 , "os" : [ "aix", "freebsd", "linux", "macos", "solaris" ]
-, "engines" : { "node" : "0.4" }
+, "engines" : { "node" : "0.6.x", "npm": "1.1.x" }
 , "licenses":
   [ { "type": "Unlicense"
     , "url" : "http://unlicense.org/"
