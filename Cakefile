@@ -2,6 +2,10 @@
 {series, parallel} = require 'async'
 
 
+# Utility functions
+
+pleaseWait = -> console.log "\nThis may take a while...\n"
+
 print = (data) -> console.log data.toString().trim()
 
 handleError = (err) ->
@@ -18,11 +22,41 @@ runCommand = (name, args) ->
     proc.stdout.on 'data', (buffer) -> console.log buffer.toString()
     proc.on 'exit', (status) -> process.exit(1) if status != 0
 
+# shorthand to runCommand with
+command = (c, cb) ->
+  runCommand "sh", ["-c", c]
+  cb
 
-option '-s', '--spec', 'Use Vows spec mode'
-option '-v', '--verbose', 'Verbose vows when necessary'
 
-task 'test', 'Test the app', (options) ->
+# Check if any node_modules or gems have become outdated.
+task 'outdated', "is all up-to-date?", ->
+  pleaseWait()
+  parallel [
+    command "npm outdated"
+    command "bundle outdated"
+  ], (err) -> throw err if err
+
+
+# It's the local police at the project's root.
+# Catches outdated modules that `cake outdated` doesn't report (major versions).
+task 'police', "checks npm package & dependencies with `police -l .`", ->
+  command "police -l ."
+
+
+# Usually follows `cake outdated`.
+task 'update', "latest node modules & ruby gems - the lazy way", ->
+  pleaseWait()
+  parallel [
+    command "npm update"
+    command "bundle update"
+  ], (err) -> throw err if err
+
+
+# Testing options.
+option '-s', '--spec', '\t  `cake test` spec-reporter vows'
+option '-v', '--verbose', '\t  `cake test` vows being verbose'
+
+task 'test', 'test the app, which should be started first', (options) ->
 
   args = [ "test/routes.coffee" ]
   args.unshift '--spec'     if options.spec
@@ -34,7 +68,7 @@ task 'test', 'Test the app', (options) ->
 
 
 # Build gh-pages almost exactly like https://github.com/josh/nack does
-task 'pages', "Build pages", ->
+task 'pages', "build pages (i.e. documentation)", ->
 
   buildMan = (callback) ->
     series [
@@ -55,7 +89,8 @@ task 'pages', "Build pages", ->
   ], (err) -> throw err if err
 
 
-task 'pages:publish', "Publish pages", ->
+# Push to gh-pages.
+task 'pages:publish', "publish the pages - builds them first", ->
 
   checkoutBranch = (callback) ->
     series [
@@ -77,4 +112,34 @@ task 'pages:publish', "Publish pages", ->
     (sh "cake pages")
     publish
   ], (err) -> throw err if err
+
+
+# Run the web app with options.
+option '-b', '--bcat', "\t  pipe via `bcat` to the browser as if it's the console"
+option '-e', '--env [NODE_ENV]', "\t  set the NODE_ENV for `cake run` task (or 'development')"
+
+
+# Run the servers.
+task 'run', "the web / servers", (options) ->
+  options.env or= 'development'
+  serving = "NODE_ENV=#{options.env}"
+  if options.env is 'development'
+    serving = "#{serving} node_modules/.bin/node-dev --debug ./server.js"
+  else
+    serving += " node ./server.js"
+  serving += " | bcat" if options.bcat?
+  console.log serving
+  parallel [
+    command serving
+  ], (err) -> throw err if err
+
+
+# Run in development mode.
+task 'dev', "web programming / workflow", ->
+  commands = [
+    invoke 'run'
+    command 'bundle exec guard'
+    command 'node_modules/.bin/node-inspector'
+  ]
+  parallel commands, (err) -> throw err if err
 
