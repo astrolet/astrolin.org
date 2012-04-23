@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-rvm --create 1.8.7@astrolet
-
-if [[ -s astrolet.gems ]] ; then
-  rvm gemset import astrolet.gems
-fi

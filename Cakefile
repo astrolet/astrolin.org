@@ -48,7 +48,8 @@ task 'pages', "Build pages", ->
     ], callback
 
   series [
-    (sh "if [ ! -d pages ] ; then mkdir pages ; fi") # mkdir pages only if it doesn't exist
+    # mkdir pages only if it doesn't exist
+    (sh "if [ ! -d pages ] ; then mkdir pages ; fi")
     (sh "rm -rf pages/*")
     buildMan
   ], (err) -> throw err if err
@@ -72,6 +73,8 @@ task 'pages:publish', "Publish pages", ->
 
   series [
     checkoutBranch
-    (sh "cake pages") # NOTE: (invoke "pages") # doesn't work here after checkoutBranch
+    # NOTE: (invoke "pages") # doesn't work here after checkoutBranch
+    (sh "cake pages")
     publish
   ], (err) -> throw err if err
+
