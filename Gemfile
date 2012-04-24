@@ -9,7 +9,6 @@ gem "compass"
 gem "guard"
 gem "growl"
 gem "rb-fsevent"
-gem "guard-ego"
 gem "guard-compass",
     :git => "https://github.com/welaika/guard-compass.git" # does growl
 

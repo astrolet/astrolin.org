@@ -29,8 +29,6 @@ GEM
     guard (1.0.1)
       ffi (>= 0.5.0)
       thor (~> 0.14.6)
-    guard-ego (0.0.1)
-      guard (>= 0.2.1)
     hashr (0.0.21)
     heroku (2.24.1)
       launchy (>= 0.3.2)
@@ -70,7 +68,6 @@ DEPENDENCIES
   growl
   guard
   guard-compass!
-  guard-ego
   heroku
   rb-fsevent
   ronn
