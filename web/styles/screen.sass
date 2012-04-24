@@ -1,11 +1,10 @@
 @import fonts
 @import colors
 
-// @import "compass/reset"
 @import "compass/css3/border-radius"
 @import "compass/css3/box-shadow"
 @import "compass/css3/text-shadow"
-@import "compass/utilities/links"
+@import "compass/typography/links"
 
 .hidden
   visibility: hidden
@@ -23,8 +22,8 @@ h1
   color: darken(green, 13)
   border: 2px dashed #fff949
   +border-radius(400px, 69px)
-  +box-shadow(darken(green, 12), 0px, 2px, 5px, 1px)
-  +text-shadow(#fff949, 0px, -1px)
+  +single-box-shadow(darken(green, 12), 0px, 2px, 5px, 1px)
+  +single-text-shadow(#fff949, 0px, -1px)
 
 #cats
   padding-top: 3px
