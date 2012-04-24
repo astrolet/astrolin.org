@@ -19,7 +19,7 @@ app_path = path.normalize __dirname
 # The /public is ecstatic.  This `ecstasy` can be invoked explicitly further on.
 ecstatic_opts = autoIndex: false
 ecstatic_opts.cache = if dev then false else true
-ecstasy = ecstatic(app_path + '/public', ecstatic_opts)
+ecstasy = ecstatic app_path + '/public', ecstatic_opts
 
 
 app.helpers
@@ -99,7 +99,7 @@ app.configure ->
   app.set 'views', app_path + '/views'
   app.register '.html', jade
   app.set 'view engine', 'html'
-  app.set 'view options', { layout: yes }
+  app.set 'view options', layout: yes
 
   # Router after any other assets.
   app.use app.router
@@ -107,29 +107,29 @@ app.configure ->
 
 # Home page
 app.get "/", (req, res, next) ->
-  res.render "index", { title: "Welcome" }
+  res.render "index", title: "Welcome"
 
 # Projects JSON
 app.get "/projects", (req, res, next) ->
   res.contentType('application/json')
-  res.render("projects", {layout: false})
+  res.render "projects", layout: no
 
 # Project page
 app.get "/to/:project?", (req, res, next) ->
   req.params.project = "lin" unless req.params.project?
-  res.render "project", { title: req.params.project
-                        , headest: ""
-                        , project: req.params.project
-                        , forehead: "<br/>" + req.params.project.toUpperCase()
-                        }
+  res.render "project",
+    title: req.params.project
+    headest: ""
+    project: req.params.project
+    forehead: "<br/>" + req.params.project.toUpperCase()
 
 # Projects per category
 app.get "/cat/:category", (req, res, next) ->
-  res.render "category", { title: req.params.category
-                        , headest: ""
-                        , category: req.params.category
-                        , forehead: "<br/>" + req.params.category.toLowerCase()
-                        }
+  res.render "category",
+    title: req.params.category
+    headest: ""
+    category: req.params.category
+    forehead: "<br/>" + req.params.category.toLowerCase()
 
 
 # Catch-all: not found
