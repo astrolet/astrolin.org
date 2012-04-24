@@ -18,6 +18,7 @@
 , "dependencies":
   { "coffee-script": "*"
   , "underscore": "*"
+  , "ecstatic": "*"
   , "express": "*"
   , "jade": "*"
   }
@@ -27,6 +28,7 @@
   , "async": "*"
   , "vows": "*"
   , "api-easy": "*"
+  , "police": "*"
   }
 , "scripts": { "test": "cake test" }
 , "os" : [ "aix", "freebsd", "linux", "macos", "solaris" ]

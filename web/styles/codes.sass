@@ -1,0 +1,32 @@
+@import "compass/reset"
+@import "compass/css3/box-shadow"
+@import fonts
+@import colors
+
+body
+  font-family: $fonts-tail
+  background-color: white
+
+.code-vspace
+  margin-top: 25px
+
+.code-entail
+  text-align: center
+  position: relative
+
+.code-num
+  font-size: 120%
+  font-family: $fonts-mono
+  color: indigo
+  background-color: #fcfcfc //#f5f5f5
+  +single-box-shadow(indigo, 0px, 0px, 4px)
+
+.code-wit
+  padding:
+    left: 5px
+    right: 5px
+
+.code-pic
+  border:
+    left: 4px dashed lightgrey
+    right: 4px dashed lightgrey

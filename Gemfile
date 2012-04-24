@@ -1,21 +1,23 @@
-# first `gem install bundler && bundle install`
-# then `terminitor start` = maximum convenience :)
-# NOTE: these are used for development with Mac OSX...
-# TODO: should work on Linux (find equivalents?)
+# `gem install bundler && bundle install`
+# NOTE: some of these may only work with Mac OS X - namely growl, rb-fsevent...
 
 source "http://rubygems.org"
-
-gem "foreman"
 
 gem "sass"
 gem "compass"
 
-gem "growl"
 gem "guard"
-gem "guard-ego"
-gem "guard-compass", :git => "https://github.com/welaika/guard-compass.git" # growl fix
-# gem "guard-shell"
-# gem "guard-livereload"
-gem "livereload"
+gem "growl"
 gem "rb-fsevent"
-gem "terminitor"
+gem "guard-compass",
+    :git => "https://github.com/welaika/guard-compass.git" # does growl
+
+gem "git"
+gem "bcat"
+gem "ronn"
+gem "git-smart"
+gem "travis-lint"
+
+gem "heroku"
+gem "foreman"
+
