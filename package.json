@@ -18,6 +18,7 @@
 , "dependencies":
   { "coffee-script": "*"
   , "underscore": "*"
+  , "ecstatic": "*"
   , "express": "*"
   , "jade": "*"
   }

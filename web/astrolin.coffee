@@ -7,6 +7,12 @@ jade = require 'jade'
 express = require 'express'
 app = express.createServer()
 
+# Middleware
+ecstatic = require 'ecstatic'
+
+# Development boolean check.
+dev = if process.env.NODE_ENV is 'development' then true else false
+
 app.helpers
 
   keys: (a) ->
@@ -75,16 +81,29 @@ app.helpers
 
 # Configuration
 app.configure ->
-  node_server = path.normalize __dirname
-  app.set 'root', node_server
+
+  # Path
+  app_path = path.normalize __dirname
+  app.set 'root', app_path
+
+  # Options
+  app.enable 'show exceptions'
   app.use express.logger()
-  app.use app.router
-  app.use express.static(node_server + '/public')
-  app.set 'views', node_server + '/views'
+
+  # Jade templates
+  app.set 'views', app_path + '/views'
   app.register '.html', jade
   app.set 'view engine', 'html'
   app.set 'view options', { layout: yes }
-  app.enable 'show exceptions'
+
+  # The /public is ecstatic.
+  ecstatic_opts = autoIndex: false
+  ecstatic_opts.cache = if dev then false else true
+  app.use ecstatic(app_path + '/public', ecstatic_opts)
+
+  # Router after the static assets.
+  app.use app.router
+
 
 # Home page
 app.get "/", (req, res, next) ->
