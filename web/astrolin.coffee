@@ -13,6 +13,15 @@ ecstatic = require 'ecstatic'
 # Development boolean check.
 dev = if process.env.NODE_ENV is 'development' then true else false
 
+# Paths
+app_path = path.normalize __dirname
+
+# The /public is ecstatic.  This `ecstasy` can be invoked explicitly further on.
+ecstatic_opts = autoIndex: false
+ecstatic_opts.cache = if dev then false else true
+ecstasy = ecstatic(app_path + '/public', ecstatic_opts)
+
+
 app.helpers
 
   keys: (a) ->
@@ -81,14 +90,10 @@ app.helpers
 
 # Configuration
 app.configure ->
-
-  # Path
-  app_path = path.normalize __dirname
   app.set 'root', app_path
-
-  # Options
   app.enable 'show exceptions'
   app.use express.logger()
+  app.use ecstasy
 
   # Jade templates
   app.set 'views', app_path + '/views'
@@ -96,12 +101,7 @@ app.configure ->
   app.set 'view engine', 'html'
   app.set 'view options', { layout: yes }
 
-  # The /public is ecstatic.
-  ecstatic_opts = autoIndex: false
-  ecstatic_opts.cache = if dev then false else true
-  app.use ecstatic(app_path + '/public', ecstatic_opts)
-
-  # Router after the static assets.
+  # Router after any other assets.
   app.use app.router
 
 
@@ -130,6 +130,13 @@ app.get "/cat/:category", (req, res, next) ->
                         , category: req.params.category
                         , forehead: "<br/>" + req.params.category.toLowerCase()
                         }
+
+
+# Catch-all: not found
+app.get '*', (req, res) ->
+  res.statusCode = 404
+  req = url: "/codes/404.html"
+  ecstasy req, res
 
 # Catch and log any exceptions that may bubble to the top.
 process.addListener 'uncaughtException', (err) ->
