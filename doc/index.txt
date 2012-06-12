@@ -1,2 +1,2 @@
 # external manuals
-Home(7)             http://astrolin.com
+Base(7)             http://astrolin.com
