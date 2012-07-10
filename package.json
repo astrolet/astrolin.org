@@ -1,7 +1,7 @@
 { "name": "astrolin"
 , "description": "astro-let's do open links / source"
 , "keywords": [ "astrology", "aslrolet", "opensource", "resource" ]
-, "version": "0.0.1-1"
+, "version": "0.0.2"
 , "homepage": "http://astrolin.com"
 , "repository":
   { "type": "git"
@@ -32,7 +32,7 @@
   }
 , "scripts": { "test": "cake test" }
 , "os" : [ "aix", "freebsd", "linux", "macos", "solaris" ]
-, "engines" : { "node" : "0.6.x", "npm": "1.1.x" }
+, "engines" : { "node" : "0.8.x", "npm": "1.1.x" }
 , "licenses":
   [ { "type": "Unlicense"
     , "url" : "http://unlicense.org/"
