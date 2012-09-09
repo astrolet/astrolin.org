@@ -31,7 +31,7 @@
   , "police": "*"
   }
 , "scripts": { "test": "cake test" }
-, "os" : [ "aix", "freebsd", "linux", "macos", "solaris" ]
+, "os" : [ "!win32" ]
 , "engines" : { "node" : "0.8.x", "npm": "1.1.x" }
 , "licenses":
   [ { "type": "Unlicense"
