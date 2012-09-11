@@ -36,7 +36,7 @@ a
   +hover-link
   color: indigo
 
-a.cat
+.cat
   background-color: white
   border: 1px solid orange
   +border-radius(5px)
@@ -48,10 +48,12 @@ a.cat
   margin:
     left: $cat-space
     right: $cat-space
-  +unstyled-link
   +link-colors(darkgreen, indigo)
   &:hover
     border: 1px solid indigo
+
+a.cat
+  +unstyled-link
 
 .project, .somewhere
   +font-vars($fonts-menu)
@@ -59,8 +61,17 @@ a.cat
 .project
   height: 1.5em
 
-#bottom
+.push
   padding-top: 12px
+
+#bottom
+
+#highlight
+  height: 3em
+  width: 99%
+  border-top: 2px dashed purple
+  +border-radius(999px, 33px)
+  padding-bottom: 23px
 
 #whole
   color: $color_txt
