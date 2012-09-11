@@ -21,6 +21,7 @@
   , "ecstatic": "*"
   , "express": "2.x.x"
   , "jade": "*"
+  , "marked": "*"
   , "lin": ">=0.1.3"
   }
 , "devDependencies":

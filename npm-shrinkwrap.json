@@ -52,6 +52,9 @@
         }
       }
     },
+    "marked": {
+      "version": "0.2.5"
+    },
     "lin": {
       "version": "0.1.3",
       "dependencies": {
