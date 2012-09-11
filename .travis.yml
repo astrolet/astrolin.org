@@ -5,6 +5,7 @@ branches:
 only:
   - master
   - active
+  - have-data
 before_script: PORT=8001 node server.js &
 notifications:
   email:
