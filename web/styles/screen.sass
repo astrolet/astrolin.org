@@ -5,6 +5,7 @@
 @import "compass/css3/box-shadow"
 @import "compass/css3/text-shadow"
 @import "compass/typography/links"
+@import "compass/utilities/general/float"
 
 .hidden
   visibility: hidden
@@ -54,6 +55,17 @@ a
 
 a.cat
   +unstyled-link
+
+.theres
+  overflow: none
+  .sid
+    +float-left
+    width: 49%
+    text-align: right
+    margin-right: 5px
+  .what
+    text-align: left
+  +reset-float
 
 .project, .somewhere
   +font-vars($fonts-menu)
