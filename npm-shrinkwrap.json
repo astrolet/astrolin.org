@@ -366,14 +366,6 @@
     "node-dev": {
       "version": "0.2.2"
     },
-    "vows": {
-      "version": "0.6.2",
-      "dependencies": {
-        "eyes": {
-          "version": "0.1.7"
-        }
-      }
-    },
     "api-easy": {
       "version": "0.3.4",
       "dependencies": {
@@ -385,6 +377,14 @@
         },
         "qs": {
           "version": "0.4.2"
+        }
+      }
+    },
+    "vows": {
+      "version": "0.6.2",
+      "dependencies": {
+        "eyes": {
+          "version": "0.1.7"
         }
       }
     },
