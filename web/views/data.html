@@ -10,10 +10,15 @@ p.push
       | ID
     .what
       | :
+  - var dbp = 'http://dbpedia.org/snorql/?describe=http%3A//dbpedia.org/resource/'
   - var data = theres
   - each have in data
     h2.theres.somewhere
       .sid #{have.sid}
       .what
-        a.cat(href="") #{have.name}
+        - if(have.wid === '')
+            // No Wikipedia ID
+            .no-wid &nbsp;#{have.name}
+        - else
+            a.cat(href="#{dbp}#{have.wid}") #{have.name}
   h2.push.somewhere &#10718;
