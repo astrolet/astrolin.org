@@ -22,7 +22,7 @@
   , "express": "2.x.x"
   , "jade": "*"
   , "marked": "*"
-  , "lin": "0.1.4-1"
+  , "lin": "*"
   }
 , "devDependencies":
   { "node-dev": "*"
