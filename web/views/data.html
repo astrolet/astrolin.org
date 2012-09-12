@@ -1,0 +1,24 @@
+&#8595;
+p
+  h4
+    :markdown
+      This is Swiss Ephemeris data stuff that is
+      being made available though [sin / gravity](http://astrolet.github.com/sin).
+p.push
+  h2.theres.somewhere
+    b.sid
+      | ID
+    .what
+      | :
+  - var dbp = 'http://dbpedia.org/snorql/?describe=http%3A//dbpedia.org/resource/'
+  - var data = theres
+  - each have in data
+    h2.theres.somewhere
+      .sid #{have.sid}
+      .what
+        - if(have.wid === '')
+            // No Wikipedia ID
+            .no-wid &nbsp;#{have.name}
+        - else
+            a.cat(href="#{dbp}#{have.wid}") #{have.name}
+  h2.push.somewhere &#10718;
