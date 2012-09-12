@@ -5,6 +5,7 @@
 @import "compass/css3/box-shadow"
 @import "compass/css3/text-shadow"
 @import "compass/typography/links"
+@import "compass/utilities/general/float"
 
 .hidden
   visibility: hidden
@@ -36,7 +37,7 @@ a
   +hover-link
   color: indigo
 
-a.cat
+.cat
   background-color: white
   border: 1px solid orange
   +border-radius(5px)
@@ -48,10 +49,25 @@ a.cat
   margin:
     left: $cat-space
     right: $cat-space
-  +unstyled-link
   +link-colors(darkgreen, indigo)
   &:hover
     border: 1px solid indigo
+
+a.cat
+  +unstyled-link
+
+.theres
+  overflow: none
+  .sid
+    +float-left
+    width: 49%
+    text-align: right
+    margin-right: 5px
+  .what
+    text-align: left
+    .no-wid
+      color: darkred
+  +reset-float
 
 .project, .somewhere
   +font-vars($fonts-menu)
@@ -59,8 +75,16 @@ a.cat
 .project
   height: 1.5em
 
-#bottom
+.push
   padding-top: 12px
+
+#bottom
+
+#highlight
+  height: 3em
+  width: 99%
+  border-top: 2px dashed purple
+  +border-radius(999px, 33px)
 
 #whole
   color: $color_txt

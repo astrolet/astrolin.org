@@ -21,6 +21,9 @@ ecstatic_opts = autoIndex: false
 ecstatic_opts.cache = if dev then false else true
 ecstasy = ecstatic app_path + '/public', ecstatic_opts
 
+# Astrolet libs / data
+theres = require('lin').theres()
+
 
 app.helpers
 
@@ -132,6 +135,15 @@ app.get "/cat/:category", (req, res, next) ->
     headest: ""
     category: req.params.category
     forehead: "<br/>" + req.params.category.toLowerCase()
+
+# What the ephemeris provides automatically.
+# This is about precious / gravity together with there & lin.
+app.get "/data", (req, res, next) ->
+  res.render "data"
+    title: "Ephemeris Data"
+    headest: ""
+    forehead: "<br/>having"
+    theres: theres
 
 
 # Catch-all: not found

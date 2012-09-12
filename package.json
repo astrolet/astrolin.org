@@ -19,8 +19,10 @@
   { "coffee-script": "*"
   , "underscore": "*"
   , "ecstatic": "*"
-  , "express": "*"
+  , "express": "2.x.x"
   , "jade": "*"
+  , "marked": "*"
+  , "lin": "0.1.4-1"
   }
 , "devDependencies":
   { "node-dev": "*"
