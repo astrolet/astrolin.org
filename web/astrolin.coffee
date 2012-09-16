@@ -5,7 +5,7 @@ jade = require 'jade'
 
 # Express app
 express = require 'express'
-app = express.createServer()
+app = express()
 
 # Middleware
 ecstatic = require 'ecstatic'
@@ -25,7 +25,7 @@ ecstasy = ecstatic app_path + '/public', ecstatic_opts
 theres = require('lin').theres()
 
 
-app.helpers
+app.locals
 
   keys: (a) ->
     _.keys(a)
@@ -102,9 +102,8 @@ app.configure ->
 
   # Jade templates
   app.set 'views', app_path + '/views'
-  app.register '.html', jade
-  app.set 'view engine', 'html'
-  app.set 'view options', layout: yes
+  app.engine '.jade', jade.__express
+  app.set 'view engine', 'jade'
 
   # Router after any other assets.
   app.use app.router

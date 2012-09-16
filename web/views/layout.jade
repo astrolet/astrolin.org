@@ -38,6 +38,8 @@ html(lang="en")
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
 
+    block head
+
   body#whole
     center
       #header
@@ -47,4 +49,6 @@ html(lang="en")
           != headest + "&nbsp;"
           a(href="/")= chinese
           != "&nbsp;" + forehead
-      #torso!= body
+      #torso
+        block content
+

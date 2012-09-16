@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  &#8595;
+  p
+    - var links = linkage(project, projects[project])
+    - each val, key in links
+      h2.somewhere
+        a(href=val) #{key}
+    h2.somewhere &#10718;
