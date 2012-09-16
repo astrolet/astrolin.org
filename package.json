@@ -19,7 +19,7 @@
   { "coffee-script": "*"
   , "underscore": "*"
   , "ecstatic": "*"
-  , "express": "2.x.x"
+  , "express": "*"
   , "jade": "*"
   , "marked": "*"
   , "lin": "*"
