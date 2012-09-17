@@ -18,7 +18,9 @@
 , "dependencies":
   { "coffee-script": "*"
   , "underscore": "*"
-  , "ecstatic": "*"
+  , "director": "*"
+  , "vfs-local": "*"
+  , "vfs-http-adapter": "*"
   , "express": "*"
   , "jade": "*"
   , "marked": "*"

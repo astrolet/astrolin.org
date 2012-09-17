@@ -27,7 +27,7 @@ module.exports =
     astrolin:
       tracker: "265847"
 
-  # TODO: how to call this w/o a view
+  # TODO: w/o a view?
   projectKeys: -> JSON.stringify { projects: _.keys this.projects }
 
   # Project links
@@ -68,3 +68,4 @@ module.exports =
       all = this.linkage(project, details)
       links[project] = all[category] if all[category]?
     links
+

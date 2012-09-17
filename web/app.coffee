@@ -6,82 +6,84 @@ jade = require 'jade'
 express = require 'express'
 app = express()
 
-# Middleware
-ecstatic = require 'ecstatic'
-
 # Development boolean check.
 dev = if process.env.NODE_ENV is 'development' then true else false
 
 # Paths
 app_path = path.normalize __dirname
 
-# The /public is ecstatic.  This `ecstasy` can be invoked explicitly further on.
-ecstatic_opts = autoIndex: false
-ecstatic_opts.cache = if dev then false else true
-ecstasy = ecstatic app_path + '/public', ecstatic_opts
-
 # Astrolet libs, data and helper locals.
 theres = require('lin').theres()
 app.locals = require './locals'
 
 
-# Configuration
-app.configure ->
-  app.set 'root', app_path
-  app.enable 'show exceptions'
-  app.use express.logger()
-  app.use ecstasy
-
-  # Jade templates
-  app.set 'views', app_path + '/views'
-  app.engine '.jade', jade.__express
-  app.set 'view engine', 'jade'
-
-  # Router after any other assets.
-  app.use app.router
-
-
-# Home page
-app.get "/", (req, res, next) ->
-  res.render "index", title: "Welcome"
+# Routing with Flatiron's Director.
+director = require 'director'
+router = new director.http.Router
+  "/": get: -> @res.render "index", title: "Welcome" # Home page
 
 # Projects JSON
-app.get "/projects", (req, res, next) ->
-  res.contentType('application/json')
-  res.render "projects", layout: no
+router.get "/projects", ->
+  @res.contentType('application/json')
+  @res.render "projects", layout: no
 
 # Project page
-app.get "/to/:project?", (req, res, next) ->
-  req.params.project = "lin" unless req.params.project?
-  res.render "project",
-    title: req.params.project
+router.param 'project', /(\w*)/
+router.get "/to/:project", (prj) ->
+  prj = "astrolin" if prj is ''
+  @res.render "project",
+    title: prj
     headest: ""
-    project: req.params.project
-    forehead: "<br/>" + req.params.project.toUpperCase()
+    project: prj
+    forehead: "<br/>" + prj.toUpperCase()
 
 # Projects per category
-app.get "/cat/:category", (req, res, next) ->
-  res.render "category",
-    title: req.params.category
+router.get "/cat/:category", (cat) ->
+  @res.render "category",
+    title: cat
     headest: ""
-    category: req.params.category
-    forehead: "<br/>" + req.params.category.toLowerCase()
+    category: cat
+    forehead: "<br/>" + cat.toLowerCase()
 
 # What the ephemeris provides automatically.
 # This is about precious / gravity together with there & lin.
-app.get "/data", (req, res, next) ->
-  res.render "data"
+router.get "/data", ->
+  @res.render "data"
     title: "Ephemeris Data"
     headest: ""
     forehead: "<br/>having"
     theres: theres
 
 
-# Catch-all: not found
-app.get '*', (req, res) ->
-  res.statusCode = 404
-  req = url: "/codes/404.html"
-  ecstasy req, res
+# Configuration
+app.configure ->
+  app.set 'root', app_path
+  app.enable 'show exceptions'
+
+  # Jade templates
+  app.set 'views', app_path + '/views'
+  app.engine '.jade', jade.__express
+  app.set 'view engine', 'jade'
+
+  # Middlewares
+  app.use express.logger()
+
+  # Routing...
+  app.use (req, res, next) ->
+    router.dispatch req, res, (err) ->
+      if err
+        if req.method is 'GET' or req.method is 'HEAD'
+          next()
+        else
+          # TODO: handle this with a reusable, custom 404, function
+          res.statusCode = 404
+          res.end err.message
+
+  # Cloud9's vfs for static files
+  vfs = require('vfs-local') root: "#{app_path}/public"
+  app.use require('vfs-http-adapter') '/', vfs,
+    readOnly: true
+
 
 # Catch and log any exceptions that may bubble to the top.
 process.addListener 'uncaughtException', (err) ->
