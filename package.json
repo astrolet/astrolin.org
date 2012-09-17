@@ -1,7 +1,7 @@
 { "name": "astrolin"
 , "description": "astro-let's do open links / source"
 , "keywords": [ "astrology", "aslrolet", "opensource", "resource" ]
-, "version": "0.0.3"
+, "version": "0.0.4"
 , "homepage": "http://astrolin.com"
 , "repository":
   { "type": "git"
