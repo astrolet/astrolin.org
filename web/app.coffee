@@ -30,7 +30,7 @@ router.get "/projects", ->
 # Project page
 router.param 'project', /(\w*)/
 router.get "/to/:project", (prj) ->
-  prj = "lin" if prj is ''
+  prj = "astrolin" if prj is ''
   @res.render "project",
     title: prj
     headest: ""
