@@ -67,11 +67,22 @@ app.configure ->
 
   # Middlewares
   app.use express.logger()
+
+  # Routing...
   app.use (req, res, next) ->
     router.dispatch req, res, (err) ->
       if err
-        console.log err
-      next()
+        if req.method is 'GET' or req.method is 'HEAD'
+          next()
+        else
+          # TODO: handle this with a reusable, custom 404, function
+          res.statusCode = 404
+          res.end err.message
+          # throw "Route not found. This http '#{req.method}' method not applicable to static assets."
+
+  # Cloud9's vfs for static files
+  vfs = require('vfs-local') root: "#{app_path}/public"
+  app.use require('vfs-http-adapter')('/', vfs)
 
 
 # Catch and log any exceptions that may bubble to the top.
