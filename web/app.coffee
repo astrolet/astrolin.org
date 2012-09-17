@@ -6,23 +6,53 @@ jade = require 'jade'
 express = require 'express'
 app = express()
 
-# Middleware
-ecstatic = require 'ecstatic'
-
 # Development boolean check.
 dev = if process.env.NODE_ENV is 'development' then true else false
 
 # Paths
 app_path = path.normalize __dirname
 
-# The /public is ecstatic.  This `ecstasy` can be invoked explicitly further on.
-ecstatic_opts = autoIndex: false
-ecstatic_opts.cache = if dev then false else true
-ecstasy = ecstatic app_path + '/public', ecstatic_opts
-
 # Astrolet libs, data and helper locals.
 theres = require('lin').theres()
 app.locals = require './locals'
+
+
+# Routing with Flatiron's Director.
+director = require 'director'
+router = new director.http.Router
+  "/": get: -> @res.render "index", title: "Welcome" # Home page
+
+# Projects JSON
+router.get "/projects", ->
+  @res.contentType('application/json')
+  @res.render "projects", layout: no
+
+# Project page
+router.param 'project', /(\w*)/
+router.get "/to/:project", (prj) ->
+  prj = "lin" if prj is ''
+  @res.render "project",
+    title: prj
+    headest: ""
+    project: prj
+    forehead: "<br/>" + prj.toUpperCase()
+
+# Projects per category
+router.get "/cat/:category", (cat) ->
+  @res.render "category",
+    title: cat
+    headest: ""
+    category: cat
+    forehead: "<br/>" + cat.toLowerCase()
+
+# What the ephemeris provides automatically.
+# This is about precious / gravity together with there & lin.
+router.get "/data", ->
+  @res.render "data"
+    title: "Ephemeris Data"
+    headest: ""
+    forehead: "<br/>having"
+    theres: theres
 
 
 # Configuration
@@ -30,58 +60,18 @@ app.configure ->
   app.set 'root', app_path
   app.enable 'show exceptions'
   app.use express.logger()
-  app.use ecstasy
 
   # Jade templates
   app.set 'views', app_path + '/views'
   app.engine '.jade', jade.__express
   app.set 'view engine', 'jade'
 
-  # Router after any other assets.
-  app.use app.router
+  app.use (req, res, next) ->
+    router.dispatch req, res, (err) ->
+      if err
+        console.log "Routing Error:" + err
+      next()
 
-
-# Home page
-app.get "/", (req, res, next) ->
-  res.render "index", title: "Welcome"
-
-# Projects JSON
-app.get "/projects", (req, res, next) ->
-  res.contentType('application/json')
-  res.render "projects", layout: no
-
-# Project page
-app.get "/to/:project?", (req, res, next) ->
-  req.params.project = "lin" unless req.params.project?
-  res.render "project",
-    title: req.params.project
-    headest: ""
-    project: req.params.project
-    forehead: "<br/>" + req.params.project.toUpperCase()
-
-# Projects per category
-app.get "/cat/:category", (req, res, next) ->
-  res.render "category",
-    title: req.params.category
-    headest: ""
-    category: req.params.category
-    forehead: "<br/>" + req.params.category.toLowerCase()
-
-# What the ephemeris provides automatically.
-# This is about precious / gravity together with there & lin.
-app.get "/data", (req, res, next) ->
-  res.render "data"
-    title: "Ephemeris Data"
-    headest: ""
-    forehead: "<br/>having"
-    theres: theres
-
-
-# Catch-all: not found
-app.get '*', (req, res) ->
-  res.statusCode = 404
-  req = url: "/codes/404.html"
-  ecstasy req, res
 
 # Catch and log any exceptions that may bubble to the top.
 process.addListener 'uncaughtException', (err) ->
