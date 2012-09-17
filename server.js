@@ -1,2 +1,2 @@
 require("coffee-script");
-require("./web/astrolin");
+require("./web/app");
