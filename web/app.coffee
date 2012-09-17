@@ -59,17 +59,18 @@ router.get "/data", ->
 app.configure ->
   app.set 'root', app_path
   app.enable 'show exceptions'
-  app.use express.logger()
 
   # Jade templates
   app.set 'views', app_path + '/views'
   app.engine '.jade', jade.__express
   app.set 'view engine', 'jade'
 
+  # Middlewares
+  app.use express.logger()
   app.use (req, res, next) ->
     router.dispatch req, res, (err) ->
       if err
-        console.log "Routing Error:" + err
+        console.log err
       next()
 
 
