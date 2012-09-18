@@ -76,7 +76,7 @@ app.configure ->
           next()
         else
           # TODO: handle this with a reusable, custom 404, function
-          res.statusCode = 404
+          res.statusCode = 405
           res.end err.message
 
   # Cloud9's vfs for static files
