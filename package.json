@@ -26,6 +26,8 @@
   , "marked": "*"
   , "lin": "*"
   , "errs": "*"
+  , "error-page": "*"
+  , "plates": "*"
   }
 , "devDependencies":
   { "node-dev": "*"
