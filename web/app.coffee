@@ -97,8 +97,7 @@ app.configure ->
           status = 503
         when "EISDIR"
           # Directories must end with a '/'.
-          res.redirect req.url + '/'
-          return
+          return res.redirect req.url + '/'
         else status = 500
       # Handle the error.
       message = status + ' ' + (err.stack.message || err.message || err) + "\n"
