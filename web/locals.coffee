@@ -69,3 +69,23 @@ module.exports =
       links[project] = all[category] if all[category]?
     links
 
+  errorHandler: (req, res, err, code) ->
+    console.error err.stack || err
+    if code then status = code
+    else switch err.code
+      when "EBADREQUEST"
+        status = 400
+      when "EACCESS"
+        status = 403
+      when "ENOENT"
+        status = 404
+      when "ENOTREADY"
+        status = 503
+      when "EISDIR"
+        # Directories must end with a '/'.
+        return res.redirect req.url + '/'
+      else status = 500
+    # Handle the error.
+    message = status + ' ' + (err.stack.message || err.message || err) + "\n"
+    res.writeHead status, "Content-Type": "text/plain"
+    res.end message
