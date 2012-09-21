@@ -83,6 +83,27 @@ app.configure ->
   vfs = require('vfs-local') root: "#{app_path}/public"
   app.use require('vfs-http-adapter') '/', vfs,
     readOnly: true
+    errorHandler: (req, res, err, code) ->
+      console.error err.stack || err
+      if code then status = code
+      else switch err.code
+        when "EBADREQUEST"
+          status = 400
+        when "EACCESS"
+          status = 403
+        when "ENOENT"
+          status = 404
+        when "ENOTREADY"
+          status = 503
+        when "EISDIR"
+          # Directories must end with a '/'.
+          res.redirect req.url + '/'
+          return
+        else status = 500
+      # Handle the error.
+      message = status + ' ' + (err.stack.message || err.message || err) + "\n"
+      res.writeHead status, "Content-Type": "text/plain"
+      res.end message
 
 
 # Catch and log any exceptions that may bubble to the top.
