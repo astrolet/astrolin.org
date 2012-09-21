@@ -1,6 +1,5 @@
 util = require 'util'
 path = require 'path'
-jade = require 'jade'
 
 # Express app
 express = require 'express'
@@ -62,7 +61,7 @@ app.configure ->
 
   # Jade templates
   app.set 'views', app_path + '/views'
-  app.engine '.jade', jade.__express
+  app.engine 'jade', require('jade').__express
   app.set 'view engine', 'jade'
 
   # Middlewares
