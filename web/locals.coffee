@@ -84,6 +84,8 @@ module.exports =
       template = if 400 <= data.code < 500 then "4xx" else "5xx"
       template = __dirname + "/public/codes/" + template + ".html"
 
+      # Note that eventually all error pages will be html. Prefer HTTP requests.
+      # If we get them with `request` then have them configured through URLs.
       fs.readFile template, (err, plate) ->
         if err
           # Error page not found.
