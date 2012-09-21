@@ -25,6 +25,7 @@
   , "jade": "*"
   , "marked": "*"
   , "lin": "*"
+  , "errs": "*"
   }
 , "devDependencies":
   { "node-dev": "*"

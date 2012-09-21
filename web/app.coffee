@@ -1,6 +1,7 @@
 util = require 'util'
 path = require 'path'
 jade = require 'jade'
+errs = require 'errs'
 
 # Express app
 express = require 'express'
@@ -75,9 +76,10 @@ app.configure ->
         if req.method is 'GET' or req.method is 'HEAD'
           next()
         else
-          # TODO: handle this with a reusable, custom 404, function
-          res.statusCode = 405
-          res.end err.message
+          app.locals.errorHandler req, res,
+            errs.create("
+Route '#{req.url}' not found, the '#{req.method}' method not allowed further."),
+            405
 
   # Cloud9's vfs for static files
   vfs = require('vfs-local') root: "#{app_path}/public"
