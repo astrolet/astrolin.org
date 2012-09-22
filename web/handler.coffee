@@ -1,4 +1,5 @@
 ErrorPage = require 'error-page'
+merge = require 'deepmerge'
 fs = require 'fs'
 plates = require 'plates'
 util = require 'util'
@@ -23,16 +24,19 @@ errorTemplate = (req, res, data) ->
       res.writeHead data.code, "Content-Type": "text/html"
       res.end plates.bind plate.toString(), data
 
-# The `error-page` module options.
+# The defaults for `error-page` module options.
 errorOptions =
-  debug: true
+  debug: if process.env.NODE_ENV is 'development' then true else false
   "*": errorTemplate
 
 # Pass to `vfs-http-handler` or call directly.
-module.exports = (req, res, err, code, opts = errorOptions) ->
+module.exports = (req, res, err, code, opts = {}) ->
   # Can pass err as a `String`, make it a real `Error`.
   err = errs.create err unless util.isError err
   console.error err.stack || err
+
+  # The error-page options can be overridden.
+  opts = merge errorOptions, opts
 
   # The status code and error message.
   message = err.stack.message || err.message || err

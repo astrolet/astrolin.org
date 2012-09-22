@@ -27,6 +27,7 @@
   , "lin": "*"
   , "errs": "*"
   , "error-page": "*"
+  , "deepmerge": "*"
   , "plates": "*"
   }
 , "devDependencies":
