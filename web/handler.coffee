@@ -8,7 +8,7 @@ errs = require 'errs'
 # An `error-page` handler, because `templar` wasn't working.
 errorTemplate = (req, res, data) ->
   template = if 400 <= data.code < 500 then "4xx" else "5xx"
-  template = __dirname + "/public/codes/" + template + ".html"
+  template = data.options.platesDir + data.options.templates[template]
 
   # Note that eventually all error pages will be html. Prefer HTTP requests.
   # If we get them with `request` then have them configured through URLs.

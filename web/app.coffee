@@ -72,6 +72,10 @@ app.configure ->
   # Some configuration options made available through `req`.
   app.use (req, res, next) ->
     req.errorHandlerOptions ?=
+      platesDir: app_path + "/public"
+      templates:
+        "4xx": "/codes/4xx.html"
+        "5xx": "/codes/5xx.html"
       debugClass: "debug-hand"
     next()
 
