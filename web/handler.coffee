@@ -1,9 +1,13 @@
 ErrorPage = require 'error-page'
 fs = require 'fs'
 plates = require 'plates'
+util = require 'util'
+errs = require 'errs'
 
 # Pass to `vfs-http-handler` or call directly.
 module.exports = (req, res, err, code) ->
+  # Can pass err as a `String`, make it a real `Error`.
+  err = errs.create err unless util.isError err
   console.error err.stack || err
 
   # An `error-page` handler, because `templar` wasn't working.

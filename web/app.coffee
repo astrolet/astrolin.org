@@ -1,7 +1,6 @@
 util = require 'util'
 path = require 'path'
 jade = require 'jade'
-errs = require 'errs'
 hand = require './handler'
 
 # Express app
@@ -77,9 +76,8 @@ app.configure ->
         if req.method is 'GET' or req.method is 'HEAD'
           next()
         else
-          hand req, res,
-            errs.create("
-Route '#{req.url}' not found, the '#{req.method}' method not allowed further."),
+          hand req, res, "
+Route '#{req.url}' not found, the '#{req.method}' method not allowed further.",
             405
 
   # Cloud9's vfs for static files
