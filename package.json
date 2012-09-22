@@ -25,10 +25,7 @@
   , "jade": "*"
   , "marked": "*"
   , "lin": "*"
-  , "errs": "*"
-  , "error-page": "*"
-  , "deepmerge": "*"
-  , "plates": "*"
+  , "heck": "*"
   }
 , "devDependencies":
   { "node-dev": "*"

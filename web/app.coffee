@@ -1,7 +1,7 @@
 util = require 'util'
 path = require 'path'
 jade = require 'jade'
-hand = require './handler'
+heck = require 'heck'
 
 # Express app
 express = require 'express'
@@ -86,7 +86,7 @@ app.configure ->
         if req.method is 'GET' or req.method is 'HEAD'
           next()
         else
-          hand req, res, "
+          heck req, res, "
 Route '#{req.url}' not found, the '#{req.method}' method not allowed further.",
             405
 
@@ -94,7 +94,7 @@ Route '#{req.url}' not found, the '#{req.method}' method not allowed further.",
   vfs = require('vfs-local') root: "#{app_path}/public"
   app.use require('vfs-http-adapter') '/', vfs,
     readOnly: true
-    errorHandler: hand
+    errorHandler: heck
 
 
 # Catch and log any exceptions that may bubble to the top.
