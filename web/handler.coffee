@@ -31,17 +31,16 @@ errorTemplate = (req, res, data) ->
 # The defaults for `error-page` module options.
 errorOptions =
   debug: if process.env.NODE_ENV is 'development' then true else false
-  debugClass: "debug-hand"
   "*": errorTemplate
 
 # Pass to `vfs-http-handler` or call directly.
-module.exports = (req, res, err, code, opts = {}) ->
+module.exports = (req, res, err, code) ->
   # Can pass err as a `String`, make it a real `Error`.
   err = errs.create err unless util.isError err
   console.error err.stack || err
 
   # The error-page options can be overridden.
-  opts = merge errorOptions, opts
+  opts = merge errorOptions, req.errorHandlerOptions ? {}
 
   # The status code and error message.
   message = err.stack.message || err.message || err

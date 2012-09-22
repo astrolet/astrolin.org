@@ -69,6 +69,12 @@ app.configure ->
   # Middlewares
   app.use express.logger()
 
+  # Some configuration options made available through `req`.
+  app.use (req, res, next) ->
+    req.errorHandlerOptions ?=
+      debugClass: "debug-hand"
+    next()
+
   # Routing...
   app.use (req, res, next) ->
     router.dispatch req, res, (err) ->
