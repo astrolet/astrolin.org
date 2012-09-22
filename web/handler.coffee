@@ -4,35 +4,35 @@ plates = require 'plates'
 util = require 'util'
 errs = require 'errs'
 
+# An `error-page` handler, because `templar` wasn't working.
+errorTemplate = (req, res, data) ->
+  template = if 400 <= data.code < 500 then "4xx" else "5xx"
+  template = __dirname + "/public/codes/" + template + ".html"
+
+  # Note that eventually all error pages will be html. Prefer HTTP requests.
+  # If we get them with `request` then have them configured through URLs.
+  fs.readFile template, (err, plate) ->
+    if err
+      # Error page not found.
+      data.furtherError = err
+      res.writeHead 500, "Content-Type": "text/html"
+      res.end JSON.stringify data
+    else
+      # Using plates to serve the html.
+      # So that the pages can say more about what went wrong.
+      res.writeHead data.code, "Content-Type": "text/html"
+      res.end plates.bind plate.toString(), data
+
+# The `error-page` module options.
+errorOptions =
+  debug: true
+  "*": errorTemplate
+
 # Pass to `vfs-http-handler` or call directly.
-module.exports = (req, res, err, code) ->
+module.exports = (req, res, err, code, opts = errorOptions) ->
   # Can pass err as a `String`, make it a real `Error`.
   err = errs.create err unless util.isError err
   console.error err.stack || err
-
-  # An `error-page` handler, because `templar` wasn't working.
-  errorTemplate = (req, res, data) ->
-    template = if 400 <= data.code < 500 then "4xx" else "5xx"
-    template = __dirname + "/public/codes/" + template + ".html"
-
-    # Note that eventually all error pages will be html. Prefer HTTP requests.
-    # If we get them with `request` then have them configured through URLs.
-    fs.readFile template, (err, plate) ->
-      if err
-        # Error page not found.
-        data.furtherError = err
-        res.writeHead 500, "Content-Type": "text/html"
-        res.end JSON.stringify data
-      else
-        # Using plates to serve the html.
-        # So that the pages can say more about what went wrong.
-        res.writeHead status, "Content-Type": "text/html"
-        res.end plates.bind plate.toString(), data
-
-  # The `error-page` module options.
-  errorOptions =
-    debug: true
-    "*": errorTemplate
 
   # The status code and error message.
   message = err.stack.message || err.message || err
@@ -52,6 +52,6 @@ module.exports = (req, res, err, code) ->
     else status = 500
 
   # Handle the error.
-  res.error = new ErrorPage req, res, errorOptions
+  res.error = new ErrorPage req, res, opts
   res.error status, message
 
