@@ -2,12 +2,6 @@
 
 _ = require 'underscore'
 
-# These are only used by the `errorHandler`, so far.
-ErrorPage = require 'error-page'
-fs = require 'fs'
-plates = require 'plates'
-
-
 module.exports =
 
   keys: (a) ->
@@ -74,53 +68,4 @@ module.exports =
       all = this.linkage(project, details)
       links[project] = all[category] if all[category]?
     links
-
-  # Pass to `vfs-http-handler` or call directly.
-  errorHandler: (req, res, err, code) ->
-    console.error err.stack || err
-
-    # An `error-page` handler, because `templar` wasn't working.
-    errorTemplate = (req, res, data) ->
-      template = if 400 <= data.code < 500 then "4xx" else "5xx"
-      template = __dirname + "/public/codes/" + template + ".html"
-
-      # Note that eventually all error pages will be html. Prefer HTTP requests.
-      # If we get them with `request` then have them configured through URLs.
-      fs.readFile template, (err, plate) ->
-        if err
-          # Error page not found.
-          data.furtherError = err
-          res.writeHead 500, "Content-Type": "text/html"
-          res.end JSON.stringify data
-        else
-          # Using plates to serve the html.
-          # So that the pages can say more about what went wrong.
-          res.writeHead status, "Content-Type": "text/html"
-          res.end plates.bind plate.toString(), data
-
-    # The `error-page` module options.
-    errorOptions =
-      debug: true
-      "*": errorTemplate
-
-    # The status code and error message.
-    message = err.stack.message || err.message || err
-    if code then status = code
-    else switch err.code
-      when "EBADREQUEST"
-        status = 400
-      when "EACCESS"
-        status = 403
-      when "ENOENT"
-        status = 404
-      when "ENOTREADY"
-        status = 503
-      when "EISDIR"
-        # Directories must end with a '/'.
-        return res.redirect req.url + '/'
-      else status = 500
-
-    # Handle the error.
-    res.error = new ErrorPage req, res, errorOptions
-    res.error status, message
 
