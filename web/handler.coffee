@@ -22,11 +22,16 @@ errorTemplate = (req, res, data) ->
       # Using plates to serve the html.
       # So that the pages can say more about what went wrong.
       res.writeHead data.code, "Content-Type": "text/html"
-      res.end plates.bind plate.toString(), data
+      map = plates.Map()
+      if data.options.debug
+        map.where('class').is(data.options.debugClass).partial "
+<p><pre>#{JSON.stringify data, null, '  '}</pre></p>"
+      res.end (plates.bind plate.toString(), data, map)
 
 # The defaults for `error-page` module options.
 errorOptions =
   debug: if process.env.NODE_ENV is 'development' then true else false
+  debugClass: "debug-hand"
   "*": errorTemplate
 
 # Pass to `vfs-http-handler` or call directly.
