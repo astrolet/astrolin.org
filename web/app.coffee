@@ -75,6 +75,8 @@ app.configure ->
       "4xx": "/codes/4xx.html"
       "5xx": "/codes/5xx.html"
     debugClass: "debug-hand"
+    debugLess:
+      classes: [ "code-wit textual code-vspace", "code-pic code-vspace" ]
 
   # Routing...
   app.use (req, res, next) ->
