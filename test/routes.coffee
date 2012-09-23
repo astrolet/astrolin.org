@@ -19,7 +19,7 @@ astrolin = APIeasy.describe 'Astrolin'
   .put("/anywhere").expect(405)
   .post("/anywhere").expect(405)
   #TODO: delete method, api-easy doesn't have yet
-  #.get("/css/").expect(200) # vfs-served directory json (can't be tested yet)
+  .get("/css").expect(200)
   .head("/css/screen.css").expect(200)
   .get("/css/screen.css").expect(200)
 
