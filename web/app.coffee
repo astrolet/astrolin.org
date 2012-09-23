@@ -69,15 +69,13 @@ app.configure ->
   # Middlewares
   app.use express.logger()
 
-  # Some configuration options made available through `req`.
-  app.use (req, res, next) ->
-    req.errorHandlerOptions ?=
-      platesDir: app_path + "/public"
-      templates:
-        "4xx": "/codes/4xx.html"
-        "5xx": "/codes/5xx.html"
-      debugClass: "debug-hand"
-    next()
+  # Some heck configuration options for custom errors.
+  app.use heck.connect
+    platesDir: app_path + "/public"
+    templates:
+      "4xx": "/codes/4xx.html"
+      "5xx": "/codes/5xx.html"
+    debugClass: "debug-hand"
 
   # Routing...
   app.use (req, res, next) ->
@@ -86,7 +84,7 @@ app.configure ->
         if req.method is 'GET' or req.method is 'HEAD'
           next()
         else
-          heck req, res, "
+          heck.handler req, res, "
 Route '#{req.url}' not found, the '#{req.method}' method not allowed further.",
             405
 
@@ -94,7 +92,7 @@ Route '#{req.url}' not found, the '#{req.method}' method not allowed further.",
   vfs = require('vfs-local') root: "#{app_path}/public"
   app.use require('vfs-http-adapter') '/', vfs,
     readOnly: true
-    errorHandler: heck
+    errorHandler: heck.handler
 
 
 # Catch and log any exceptions that may bubble to the top.
