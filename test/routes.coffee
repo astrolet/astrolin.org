@@ -15,5 +15,12 @@ astrolin = APIeasy.describe 'Astrolin'
       assert.isArray results.projects
       )
   .get("/data").expect(200)
+  .get("/missing").expect(404)
+  .put("/anywhere").expect(405)
+  .post("/anywhere").expect(405)
+  #TODO: delete method, api-easy doesn't have yet
+  .get("/css").expect(200)
+  .head("/css/screen.css").expect(200)
+  .get("/css/screen.css").expect(200)
 
   .export(module)

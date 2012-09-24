@@ -2,14 +2,16 @@
 <html>
   <head lang="en">
     <meta charset="utf-8"/>
-    <title>A Not Found</title>
+    <title>An Error</title>
     <link href='/css/codes.css' media='screen' rel='stylesheet' type='text/css'/>
+    <link href='/component/prettify/prettify.css' rel='stylesheet' type='text/css'/>
     <style type='text/css'>
       /*<![CDATA[*/
         .wf-loading .textual { visibility: hidden }
       /*]]>*/
     </style>
     <script type="text/javascript" src="http://use.typekit.com/loe7yzm.js"></script>
+    <script type="text/javascript" src="/component/prettify/prettify.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <script type="text/javascript">
       var _gaq = _gaq || [];
@@ -22,11 +24,14 @@
       })();
     </script>
   </head>
-  <body>
+  <body onload="prettyPrint();">
     <div class="code-entail code-vspace">
-      <div class="code-num textual">404</div>
-      <p class="code-wit textual code-vspace">This has gone where Ophiuchus went...  While we wouldn't look for a 13th sign, the page may yet be found.  Please double-check the address and let us know if you think we are in error.</p>
-      <img class="code-pic code-vspace" src="/images/codes/not_found_monoceros.jpg" alt="404 is for not_found"/>
+      <div id="statusCode" class="code-num textual">500</div>
+      <p class="code-wit textual code-vspace">Apologies...  Fate has intervened to break something.  We are already exercising our free will to fix it.  Please get in touch to point out the glitch.</p>
+      <img class="code-pic code-vspace" src="/images/codes/error_zeus_hera.jpg" alt="500 is for error"/>
+      <p class="code-wit textual code-vspace">Amor fati.</p>
     </div>
+    <div class="debug-hand"></div>
+    <div class="code-vspace"></div>
   </body>
 </html>

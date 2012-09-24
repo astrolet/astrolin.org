@@ -1,6 +1,6 @@
 util = require 'util'
 path = require 'path'
-jade = require 'jade'
+heck = require 'heck'
 
 # Express app
 express = require 'express'
@@ -62,11 +62,21 @@ app.configure ->
 
   # Jade templates
   app.set 'views', app_path + '/views'
-  app.engine '.jade', jade.__express
+  app.engine 'jade', require('jade').__express
   app.set 'view engine', 'jade'
 
   # Middlewares
   app.use express.logger()
+
+  # Some heck configuration options for custom errors.
+  app.use heck.connect
+    platesDir: app_path + "/public"
+    templates:
+      "4xx": "/codes/4xx.html"
+      "5xx": "/codes/5xx.html"
+    debugClass: "debug-hand"
+    debugLess:
+      classes: [ "code-wit textual code-vspace", "code-pic code-vspace" ]
 
   # Routing...
   app.use (req, res, next) ->
@@ -75,14 +85,15 @@ app.configure ->
         if req.method is 'GET' or req.method is 'HEAD'
           next()
         else
-          # TODO: handle this with a reusable, custom 404, function
-          res.statusCode = 404
-          res.end err.message
+          heck.handler req, res, "
+Route '#{req.url}' not found, the '#{req.method}' method not allowed further.",
+            405
 
   # Cloud9's vfs for static files
   vfs = require('vfs-local') root: "#{app_path}/public"
   app.use require('vfs-http-adapter') '/', vfs,
     readOnly: true
+    errorHandler: heck.handler
 
 
 # Catch and log any exceptions that may bubble to the top.
