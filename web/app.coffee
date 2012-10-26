@@ -1,6 +1,7 @@
 util = require 'util'
 path = require 'path'
 heck = require 'heck'
+merge = require 'deepmerge'
 
 # Express app
 express = require 'express'
@@ -14,7 +15,7 @@ app_path = path.normalize __dirname
 
 # Astrolet libs, data and helper locals.
 theres = require('lin').theres()
-app.locals = require './locals'
+app.locals = merge require('./locals'), app.locals
 
 
 # Routing with Flatiron's Director.

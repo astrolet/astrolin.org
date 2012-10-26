@@ -26,6 +26,7 @@
   , "marked": "*"
   , "lin": "*"
   , "heck": "*"
+  , "deepmerge": "*"
   }
 , "devDependencies":
   { "node-dev": "*"
