@@ -104,4 +104,5 @@ process.addListener 'uncaughtException', (err) ->
 # Start the server.
 port = parseInt(process.env.PORT || process.env.VMC_APP_PORT || process.env.C9_PORT || 8001)
 app.listen port, null # app.address().port # null host will accept connections from other instances
-console.log "Express been started on :%s", port
+console.log "Astrolin has started on http://localhost:%s", port
+
