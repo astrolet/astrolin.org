@@ -1,6 +1,6 @@
 {
   "name": "astrolin",
-  "version": "0.0.6",
+  "version": "0.0.6-1",
   "dependencies": {
     "coffee-script": {
       "version": "1.4.0"
@@ -108,11 +108,11 @@
             "coffee-script": {
               "version": "1.3.1"
             },
-            "eyes": {
-              "version": "0.1.7"
-            },
             "docco": {
               "version": "0.3.0"
+            },
+            "eyes": {
+              "version": "0.1.7"
             },
             "jsonify": {
               "version": "0.0.0"
