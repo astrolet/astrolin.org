@@ -61,7 +61,7 @@ task 'test', 'test the app, which should be started first', (options) ->
   # env defaults
   options.env or= 'development'
 
-  args = [ "test/routes.coffee" ]
+  args = [ "test/vows/routes.coffee" ]
   args.unshift '--spec'     if options.spec
   args.unshift '--verbose'  if options.verbose
 

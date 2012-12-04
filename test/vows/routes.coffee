@@ -1,4 +1,4 @@
-host = (require './host')(__filename)
+host = (require '../host')(__filename)
 assert  = require('assert')
 APIeasy = require('api-easy')
 
