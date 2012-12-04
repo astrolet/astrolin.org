@@ -1,9 +1,10 @@
+host = (require './host')(__filename)
 assert  = require('assert')
 APIeasy = require('api-easy')
 
 astrolin = APIeasy.describe 'Astrolin'
 
-(astrolin.use "localhost", 8001).setHeader('Content-Type', 'application/json')
+(astrolin.use host.name, host.port).setHeader('Content-Type', 'text/html')
 
   # Expected and missing routes
   .get("/").expect(200)
