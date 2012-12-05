@@ -1,6 +1,13 @@
 # [![Build Status](https://secure.travis-ci.org/astrolet/astrolin.png)](http://travis-ci.org/astrolet/astrolin)
 # astrolin -- astro-let's do open links / source
 
+Served as [astrolin.org/](http://astrolin.org).
+
+Includes extra tests for [heck](https://github.com/orlin/heck).
+
+Also, a [little wiki](https://github.com/astrolet/astrolin/wiki) for all
+[the projects](https://github.com/astrolet).
+
 
 ## WHAT
 
@@ -10,15 +17,18 @@
 
 ## SITE
 
+With the [npm](http://npmjs.org) prerequisite, do `npm install astrolin`.
+
     node server.js
 
-Served as [astrolin.com/](http://www.astrolin.com).
-Also, [a wiki](https://github.com/astrolet/astrolin/wiki) for all.
 
+## TEST
 
-## SETUP
+Fork / clone this project.
 
-With the [npm](http://npmjs.org) prerequisite, do `npm install astrolin`.
+Run `cake dev` to develop.
+
+Run `cake test` against a running server.
 
 
 ## LAW
