@@ -58,13 +58,16 @@ option '-v', '--verbose', '\t  `cake test` vows being verbose'
 
 task 'test', 'test the app, which should be started first', (options) ->
 
-  args = [ "test/routes.coffee" ]
+  # env defaults
+  options.env or= 'development'
+
+  args = [ "test/vows/*.spec.coffee" ]
   args.unshift '--spec'     if options.spec
   args.unshift '--verbose'  if options.verbose
 
-  vows = spawn 'vows', args
-  vows.stdout.on 'data', print
-  vows.stderr.on 'data', print
+  execute = "NODE_ENV=#{options.env} vows #{args.join ' '}"
+  execute += " | bcat" if options.bcat?
+  command execute
 
 
 # Build gh-pages almost exactly like https://github.com/josh/nack does
