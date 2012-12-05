@@ -25,7 +25,7 @@ module.exports = (file = undefined, env = process.env.NODE_ENV || 'development')
   # just keep it short / readable.
   # NOTE: Test context shouldn't be assumed in the future,
   # is Running broad enough - literally can apply to any {coffee} assumption?
-  console.log "Running #{host.base} against http://#{host.name}:#{host.port}"
+  console.log "Testing http://#{host.name}:#{host.port} with #{host.base}"
 
   host
 
