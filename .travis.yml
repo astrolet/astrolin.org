@@ -12,3 +12,4 @@ notifications:
       - admin@astrolet.net
     on_success: change
     on_failure: always
+
