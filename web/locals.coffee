@@ -11,6 +11,11 @@ module.exports =
 
   # = key, false (hides it), or full url
   projects:
+    pi:
+      docs: "https://github.com/astropi/astropi#readme"
+      source: "https://github.com/astropi/astropi"
+      tracker: "265847"
+      package: "astropi"
     eden:
       tracker: "203533"
     lin:
