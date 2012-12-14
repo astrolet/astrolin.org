@@ -8,6 +8,8 @@ Includes extra tests for [heck](https://github.com/orlin/heck).
 Also, a [little wiki](https://github.com/astrolet/astrolin/wiki) for all
 [the projects](https://github.com/astrolet).
 
+Coming-up: `astrolin install` command for complete setup.
+
 
 ## WHAT
 
@@ -25,6 +27,8 @@ With the [npm](http://npmjs.org) prerequisite, do `npm install astrolin`.
 ## TEST
 
 Fork / clone this project.
+
+Do `npm install` the `node_modules` package dependencies.
 
 Run `cake dev` to develop.
 
