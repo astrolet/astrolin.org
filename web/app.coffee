@@ -29,8 +29,8 @@ router.get "/projects", ->
   @res.render "projects", layout: no
 
 # Project page
-router.param 'project', /(\w*)/
-router.get "/to/:project", (prj) ->
+router.param 'project', /\/?(\w*)/
+router.get "/to:project", (prj) ->
   prj = "astrolin" if prj is ''
   @res.render "project",
     title: prj
