@@ -32,7 +32,7 @@ module.exports =
       project: "astropi"
       docs: "https://github.com/astropi/astropi#readme"
       issues: true
-      tracker: false
+      tracker: "265847"
     astrolin:
       tracker: "265847"
 
