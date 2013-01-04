@@ -36,7 +36,7 @@
   , "api-easy": "*"
   , "police": "*"
   }
-, "scripts": { "test": "cake test" }
+, "scripts": { "test": "cake -w 69 test" }
 , "os" : [ "!win32" ]
 , "engines" : { "node" : "0.8.x", "npm": "1.1.x" }
 , "licenses":

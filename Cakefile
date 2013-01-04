@@ -27,6 +27,9 @@ command = (c, cb) ->
   runCommand "sh", ["-c", c]
   cb
 
+sleep = (secs, cb) ->
+  setTimeout cb, secs * 1000
+
 
 # Check if any node_modules or gems have become outdated.
 task 'outdated', "is all up-to-date?", ->
@@ -55,11 +58,14 @@ task 'update', "latest node modules & ruby gems - the lazy way", ->
 # Testing options.
 option '-s', '--spec', '\t  `cake test` spec-reporter vows'
 option '-v', '--verbose', '\t  `cake test` vows being verbose'
+option '-w', '--wait [seconds]', '\t  `cake test` delay running tests'
+
 
 task 'test', 'test the app, which should be started first', (options) ->
 
-  # env defaults
+  # options & defaults
   options.env or= 'development'
+  options.wait or= 0
 
   args = [ "test/vows/*.spec.coffee" ]
   args.unshift '--spec'     if options.spec
@@ -67,7 +73,12 @@ task 'test', 'test the app, which should be started first', (options) ->
 
   execute = "NODE_ENV=#{options.env} vows #{args.join ' '}"
   execute += " | bcat" if options.bcat?
-  command execute
+
+  if options.wait > 0
+    console.log "Will sleep for #{options.wait} seconds before running the tests.\n"
+  # So that the server can take its time to start before the tests are run ...
+  sleep options.wait, ->
+    command execute
 
 
 # Build gh-pages almost exactly like https://github.com/josh/nack does

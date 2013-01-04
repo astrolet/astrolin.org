@@ -5,7 +5,7 @@ branches:
 only:
   - master
   - active
-before_script: PORT=8001 node server.js
+before_script: PORT=8001 node server.js &
 notifications:
   email:
     recipients:
