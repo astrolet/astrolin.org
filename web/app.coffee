@@ -73,7 +73,8 @@ app.configure ->
   # So far 'astrolin.org' and 'astropi.org'. In a Jade template, hostname becomes
   # theme - available as a local var.
   app.use (req, res, next) ->
-    req.hostname = if dev and process.env.HOST_APP? then process.env.HOST_APP else req.host
+    domain = req.headers.host.split(':')[0]
+    req.hostname = if dev and process.env.HOST_APP? then process.env.HOST_APP else domain
     res.locals.theme = if req.hostname is 'astropi.org' then 'pi' else 'lin'
     next()
 
