@@ -29,8 +29,8 @@ router.get "/projects", ->
   @res.render "projects", layout: no
 
 # Project page
-router.param 'project', /(\w*)/
-router.get "/to/:project", (prj) ->
+router.param 'project', /\/?(\w*)/
+router.get "/to:project", (prj) ->
   prj = "astrolin" if prj is ''
   @res.render "project",
     title: prj
@@ -68,6 +68,14 @@ app.configure ->
 
   # Middlewares
   app.use express.logger()
+
+  # Enable host-specific variations of pages, app details, etc.
+  # So far 'astrolin.org' and 'astropi.org'. In a Jade template, hostname becomes
+  # theme - available as a local var.
+  app.use (req, res, next) ->
+    req.hostname = if dev and process.env.HOST_APP? then process.env.HOST_APP else req.host
+    res.locals.theme = if req.hostname is 'astropi.org' then 'pi' else 'lin'
+    next()
 
   # Some heck configuration options for custom errors.
   app.use heck.connect
