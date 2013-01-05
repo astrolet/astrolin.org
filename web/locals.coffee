@@ -17,10 +17,13 @@ module.exports =
     eden:
       tracker: "203533"
     lin:
+      issues: true
       tracker: "265847"
     upon:
+      issues: true
       tracker: "265847"
     precious:
+      issues: true
       tracker: "203533"
     there:
       tracker: "203533"
@@ -34,6 +37,7 @@ module.exports =
       issues: true
       tracker: "265847"
     astrolin:
+      issues: true
       tracker: "265847"
 
   # TODO: w/o a view?
