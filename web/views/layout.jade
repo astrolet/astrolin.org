@@ -43,8 +43,8 @@ html(lang="en")
   body#whole
     center
       #header
-        - if (typeof forehead == "undefined")
-          - forehead = "LIN"
+        - if (typeof forehead === "undefined")
+          - forehead = theme.toUpperCase()
         h1
           != headest + "&nbsp;"
           a(href="/")= chinese
