@@ -9,9 +9,12 @@ block content
   br
   p
       - each project in keys(projects)
-        - // if(project != "astrolin")
-        h2.project
-          a(href= "/to/" + project) &nbsp;#{project.toUpperCase()}&nbsp;
+        - if(project === "pi")
+          a(href= "/to/" + project)
+            img(src= "/images/pi/Raspi-PGB001-300x267.png", width= "235px")
+        - else
+          h2.project
+            a(href= "/to/" + project) &nbsp;#{project.toUpperCase()}&nbsp;
 
     h2#bottom.project.push
       - each cat in cats
