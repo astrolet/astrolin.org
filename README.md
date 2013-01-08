@@ -1,10 +1,8 @@
 # [![Build Status](https://secure.travis-ci.org/astrolet/astrolin.png)](http://travis-ci.org/astrolet/astrolin)
 # astrolin -- astro-let's do open links / source
 
-```
-grow astrology like the woods
-grow stronger with each tree
-```
+>      grow astrology like the woods
+>      grow stronger with each tree
 
 
 ## WHAT

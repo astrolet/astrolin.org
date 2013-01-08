@@ -11,6 +11,7 @@ pages
 
 # Node
 node_modules
+npm-debug.log
 lib-cov
 *.seed
 *.log
@@ -29,6 +30,3 @@ results
 .settings.xml
 web/public/watch.*
 
-# Duostack
-mnt
-tmp
