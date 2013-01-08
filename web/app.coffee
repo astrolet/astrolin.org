@@ -55,6 +55,18 @@ router.get "/data", ->
     forehead: "<br/>having"
     theres: theres
 
+# Observability status from http://vimeo.com/52714202
+router.get "/health", ->
+  @res.send
+    of: @req.hostname
+    on: (new Date)
+    pid: process.pid
+    uptime: process.uptime() # in seconds
+    memory: process.memoryUsage() # in bytes
+    versions: process.versions
+    platform: process.platform
+    processor: process.arch
+
 
 # Configuration
 app.configure ->
