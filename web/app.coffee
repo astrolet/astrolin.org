@@ -58,7 +58,7 @@ router.get "/data", ->
 # Observability status from http://vimeo.com/52714202
 router.get "/health", ->
   @res.send
-    of: @req.hostname
+    of: @req.headHost
     on: (new Date)
     pid: process.pid
     uptime: process.uptime() # in seconds
@@ -82,12 +82,12 @@ app.configure ->
   app.use express.logger()
 
   # Enable host-specific variations of pages, app details, etc.
-  # So far 'astrolin.org' and 'astropi.org'. In a Jade template, hostname becomes
+  # So far 'astrolin.org' and 'astropi.org'. In a Jade template, headHost becomes
   # theme - available as a local var.
   app.use (req, res, next) ->
-    domain = req.headers.host.split(':')[0]
-    req.hostname = if dev and process.env.HOST_APP? then process.env.HOST_APP else domain
-    res.locals.theme = if req.hostname is 'astropi.org' then 'pi' else 'lin'
+    req.headHost = req.headers.host.split(':')[0]
+    req.headHost = process.env.HOST_APP if dev and process.env.HOST_APP?
+    res.locals.theme = if req.headHost is 'astropi.org' then 'pi' else 'lin'
     next()
 
   # Some heck configuration options for custom errors.
