@@ -14,14 +14,14 @@ module.exports =
     terra:
       docs: false
       tracker: "265847"
-    eden:
-      tracker: "203533"
-    lin:
-      issues: true
-      tracker: "265847"
     upon:
       issues: true
       tracker: "265847"
+    archai:
+      issues: true
+      tracker: "265847"
+    eden:
+      tracker: "203533"
     precious:
       issues: true
       tracker: "203533"
