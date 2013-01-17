@@ -14,7 +14,7 @@ dev = if process.env.NODE_ENV is 'development' then true else false
 app_path = path.normalize __dirname
 
 # Astrolet libs, data and helper locals.
-theres = require('lin').theres()
+theres = require('archai').theres()
 app.locals = merge require('./locals'), app.locals
 
 
