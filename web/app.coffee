@@ -87,7 +87,8 @@ app.configure ->
   app.use (req, res, next) ->
     req.headHost = req.headers.host.split(':')[0]
     req.headHost = process.env.HOST_APP if dev and process.env.HOST_APP?
-    res.locals.theme = if req.headHost is 'astropi.org' then 'pi' else 'lin'
+    res.locals.theme = (headHost = req.headHost) ->
+      if headHost.toString() is 'astropi.org' then 'pi' else 'lin'
     next()
 
   # Some heck configuration options for custom errors.
