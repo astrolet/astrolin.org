@@ -1,6 +1,6 @@
 {
   "name": "astrolin",
-  "version": "0.0.9-1",
+  "version": "0.0.9-2",
   "dependencies": {
     "coffee-script": {
       "version": "1.4.0"
@@ -283,23 +283,23 @@
             }
           }
         },
-        "chai": {
-          "version": "1.4.2"
-        },
         "async": {
           "version": "0.1.18"
         },
-        "eyes": {
-          "version": "0.1.7"
+        "chai": {
+          "version": "1.4.2"
         },
         "docco": {
           "version": "0.3.0"
         },
-        "should": {
-          "version": "0.6.1"
+        "eyes": {
+          "version": "0.1.7"
         },
         "jsonify": {
           "version": "0.0.0"
+        },
+        "should": {
+          "version": "0.6.1"
         },
         "mocha": {
           "version": "1.4.2",
