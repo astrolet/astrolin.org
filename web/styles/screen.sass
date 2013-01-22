@@ -6,6 +6,7 @@
 @import "compass/css3/text-shadow"
 @import "compass/typography/links"
 @import "compass/utilities/general/float"
+@import "compass/css3/images"
 
 .hidden
   visibility: hidden
@@ -89,4 +90,11 @@ a.cat
 #whole
   color: $color_txt
   +font-vars($fonts-text)
-  background-color: $color_bg
+  background-color: white
+  // Note: use $color_bg after making a transparent astropi.org background
+  .pi
+    background:
+      image: image-url("/images/pi/rpi3_preview_featured.jpg")
+      position: top, center
+      repeat: no-repeat
+
