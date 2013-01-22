@@ -43,12 +43,15 @@ html(lang="en")
   body#whole
     center
       #header
-        - if (typeof forehead === "undefined")
-          - forehead = theme.toUpperCase()
         h1
           != headest + "&nbsp;"
-          a(href="/")= chinese
-          != "&nbsp;" + forehead
+          - if (typeof forehead === "undefined")
+            span(style= "color: darkgreen")
+              != chinese + "&nbsp;"
+            a(href="http://#{otherURL}")= other.toUpperCase()
+          - else
+            a(href="/")= chinese
+            != "&nbsp;" + forehead
       #torso
         block content
 

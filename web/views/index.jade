@@ -8,6 +8,7 @@ block content
       | grow stronger with each tree
   br
   p
+    div(class= theme)
       - each project in keys(projects)
         - if(project === "pi")
           a(href= "/to/" + project)

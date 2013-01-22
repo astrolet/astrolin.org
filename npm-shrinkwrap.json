@@ -1,6 +1,6 @@
 {
   "name": "astrolin",
-  "version": "0.0.9",
+  "version": "0.0.9-3",
   "dependencies": {
     "coffee-script": {
       "version": "1.4.0"
@@ -119,6 +119,12 @@
     "archai": {
       "version": "0.2.0-1",
       "dependencies": {
+        "coffee-script": {
+          "version": "1.4.0"
+        },
+        "underscore": {
+          "version": "1.4.3"
+        },
         "backbone": {
           "version": "0.5.3"
         },
@@ -129,22 +135,52 @@
         "there": {
           "version": "0.1.0",
           "dependencies": {
+            "coffee-script": {
+              "version": "1.4.0"
+            },
+            "underscore": {
+              "version": "1.4.3"
+            },
             "async": {
               "version": "0.1.22"
             },
             "eyes": {
               "version": "0.1.8"
+            },
+            "docco": {
+              "version": "0.3.0"
             }
           }
         },
         "upon": {
           "version": "0.1.0",
           "dependencies": {
+            "coffee-script": {
+              "version": "1.4.0"
+            },
+            "underscore": {
+              "version": "1.4.3"
+            },
             "underscore.string": {
               "version": "2.3.1"
             },
             "geoutils": {
               "version": "0.1.0"
+            },
+            "async": {
+              "version": "0.1.18"
+            },
+            "docco": {
+              "version": "0.3.0"
+            },
+            "eyes": {
+              "version": "0.1.7"
+            },
+            "jsonify": {
+              "version": "0.0.0"
+            },
+            "should": {
+              "version": "0.6.1"
             },
             "vows": {
               "version": "0.6.4",
@@ -184,8 +220,71 @@
                   "version": "0.3.0"
                 }
               }
+            },
+            "police": {
+              "version": "0.2.3",
+              "dependencies": {
+                "moment": {
+                  "version": "1.5.1"
+                },
+                "request": {
+                  "version": "2.9.202"
+                },
+                "prompt": {
+                  "version": "0.1.12",
+                  "dependencies": {
+                    "colors": {
+                      "version": "0.6.0-1"
+                    }
+                  }
+                },
+                "winston": {
+                  "version": "0.5.11",
+                  "dependencies": {
+                    "colors": {
+                      "version": "0.6.0-1"
+                    },
+                    "loggly": {
+                      "version": "0.3.11",
+                      "dependencies": {
+                        "timespan": {
+                          "version": "2.2.0"
+                        }
+                      }
+                    },
+                    "stack-trace": {
+                      "version": "0.0.6"
+                    }
+                  }
+                },
+                "optimist": {
+                  "version": "0.3.1",
+                  "dependencies": {
+                    "wordwrap": {
+                      "version": "0.0.2"
+                    }
+                  }
+                },
+                "nconf": {
+                  "version": "0.5.1",
+                  "dependencies": {
+                    "ini": {
+                      "version": "1.0.2"
+                    }
+                  }
+                },
+                "semver": {
+                  "version": "1.0.13"
+                },
+                "pkginfo": {
+                  "version": "0.2.3"
+                }
+              }
             }
           }
+        },
+        "async": {
+          "version": "0.1.18"
         },
         "chai": {
           "version": "1.4.2"
@@ -298,14 +397,6 @@
     "node-dev": {
       "version": "0.2.2"
     },
-    "vows": {
-      "version": "0.6.2",
-      "dependencies": {
-        "eyes": {
-          "version": "0.1.7"
-        }
-      }
-    },
     "api-easy": {
       "version": "0.3.4",
       "dependencies": {
@@ -320,36 +411,11 @@
         }
       }
     },
-    "node-inspector": {
-      "version": "0.1.10",
+    "vows": {
+      "version": "0.6.2",
       "dependencies": {
-        "socket.io": {
-          "version": "0.8.7",
-          "dependencies": {
-            "socket.io-client": {
-              "version": "0.8.7",
-              "dependencies": {
-                "uglify-js": {
-                  "version": "1.0.6"
-                },
-                "websocket-client": {
-                  "version": "1.0.0"
-                },
-                "xmlhttprequest": {
-                  "version": "1.2.2"
-                }
-              }
-            },
-            "policyfile": {
-              "version": "0.0.4"
-            },
-            "redis": {
-              "version": "0.6.7"
-            }
-          }
-        },
-        "paperboy": {
-          "version": "0.0.3"
+        "eyes": {
+          "version": "0.1.7"
         }
       }
     },
@@ -436,6 +502,39 @@
         },
         "pkginfo": {
           "version": "0.2.3"
+        }
+      }
+    },
+    "node-inspector": {
+      "version": "0.1.10",
+      "dependencies": {
+        "socket.io": {
+          "version": "0.8.7",
+          "dependencies": {
+            "socket.io-client": {
+              "version": "0.8.7",
+              "dependencies": {
+                "uglify-js": {
+                  "version": "1.0.6"
+                },
+                "websocket-client": {
+                  "version": "1.0.0"
+                },
+                "xmlhttprequest": {
+                  "version": "1.2.2"
+                }
+              }
+            },
+            "policyfile": {
+              "version": "0.0.4"
+            },
+            "redis": {
+              "version": "0.6.7"
+            }
+          }
+        },
+        "paperboy": {
+          "version": "0.0.3"
         }
       }
     }
