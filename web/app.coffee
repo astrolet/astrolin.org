@@ -16,12 +16,15 @@ app_path = path.normalize __dirname
 # Astrolet libs, data and helper locals.
 theres = require('archai').theres()
 app.locals = merge require('./locals'), app.locals
+app.locals.pretty = true if dev
 
 
 # Routing with Flatiron's Director.
 director = require 'director'
 router = new director.http.Router
-  "/": get: -> @res.render "index", title: "Welcome" # Home page
+  "/": get: -> @res.render "index"
+    title: "Welcome" # Home page
+    forehead: undefined # cached otherwise
 
 # Projects JSON
 router.get "/projects", ->
@@ -59,6 +62,7 @@ router.get "/data", ->
 router.get "/health", ->
   @res.send
     of: @res.locals.headHost
+    as: @res.locals.theme
     on: (new Date)
     pid: process.pid
     uptime: process.uptime() # in seconds
@@ -82,12 +86,15 @@ app.configure ->
   app.use express.logger()
 
   # Enable host-specific variations of pages, app details, etc.
-  # So far 'astrolin.org' and 'astropi.org' for a Jade `theme()`.
+  # So far 'astrolin.org' and 'astropi.org' for a view `theme`.
   app.use (req, res, next) ->
     res.locals.headHost = req.headers.host.split(':')[0].toString()
     res.locals.headHost = process.env.HOST_APP if dev and process.env.HOST_APP?
-    res.locals.theme = (headHost = res.locals.headHost) ->
-      if headHost is 'astropi.org' then 'pi' else 'lin'
+    res.locals.theme = 'lin'
+    res.locals.other = 'pi'
+    if res.locals.headHost is 'astropi.org'
+      [res.locals.theme, res.locals.other] = [res.locals.other, res.locals.theme]
+    res.locals.otherURL = "astro#{res.locals.other}.org"
     next()
 
   # Some heck configuration options for custom errors.
