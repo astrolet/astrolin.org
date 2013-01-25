@@ -13,6 +13,7 @@ $total-columns: 11             // 11-column grid
 $column-width: 1.7em           // each column is 1.7em wide
 $gutter-width: 0.4em           // 0.4em gutters between columns
 $grid-padding: $gutter-width   // grid-padding equal to gutters
+$container-style: magic
 @import "susy"
 
 #whole
@@ -39,6 +40,9 @@ $grid-padding: $gutter-width   // grid-padding equal to gutters
     .mid
       text-align: center
     .child
+      // Note: accept PRECIOUS overflow or min-width breaks the container magic
+      // only noticeable at sub-tablet form factors (i.e. smartphones perhaps)
+      // min-width: 3 * $column-width + 2 * $gutter-width
       +font-vars($fonts-menu)
       padding-top: 3px
       //border: 1px dashed white
