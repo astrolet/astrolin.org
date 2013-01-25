@@ -27,6 +27,11 @@ $container-style: magic
       position: top, center
       repeat: no-repeat
       size: 912px, 912px
+  #header
+    .tsu
+      +single-text-shadow(#fff949, -1px, -1px)
+    .tsd
+      +single-text-shadow(lighten(#bb0e42, 23), 1px, 1px)
 
 #packages
   padding-bottom: 25px
@@ -109,7 +114,7 @@ h1
   color: darken(green, 13)
   border: 2px dashed #fff949
   +border-radius(400px, 69px)
-  +single-box-shadow(darken(green, 12), 0px, 2px, 5px, 1px)
+  +single-box-shadow(darken(#76ae26, 6), 0px, 2px, 5px, 1px)
   +single-text-shadow(#fff949, 0px, -1px)
 
 #cats

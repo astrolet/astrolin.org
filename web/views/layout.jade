@@ -44,11 +44,12 @@ html(lang="en")
     center
       #header
         h1
-          != headest + "&nbsp;"
+          span.tsu
+            != headest + "&nbsp;"
           - if (typeof forehead === "undefined")
-            span(style= "color: darkgreen")
+            span.tsu(style= "color: darkgreen")
               != chinese + "&nbsp;"
-            a(href="http://#{otherURL}")= other.toUpperCase()
+            a.tsd(href="http://#{otherURL}")= other.toUpperCase()
           - else
             a(href="/")= chinese
             != "&nbsp;" + forehead
