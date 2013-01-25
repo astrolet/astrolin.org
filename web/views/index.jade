@@ -10,7 +10,7 @@ block content
   p
     div(class= theme)
 
-      h2.packages
+      h2#packages
         .line
           .l-room &nbsp;
           .s-room &nbsp;
@@ -47,12 +47,13 @@ block content
             a(href= "/to/terra") TERRA
 
       - each project in ["pi", "astrolin"]
-        - if(project === "pi")
-          a(href= "/to/" + project)
-            img(src= "/images/pi/Raspi-PGB001-300x267.png", width= "235px")
-        - else
-          h2.project
-            a(href= "/to/" + project) &nbsp;#{project.toUpperCase()}&nbsp;
+        .platform
+          - if(project === "pi")
+            a(href= "/to/" + project)
+              img(src= "/images/pi/Raspi-PGB001-300x267.png", width= "235px")
+          - else
+            h2.project
+              a(href= "/to/" + project) &nbsp;#{project.toUpperCase()}&nbsp;
 
     h2#bottom.project.push
       - each cat in cats
