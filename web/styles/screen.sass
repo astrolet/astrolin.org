@@ -7,6 +7,96 @@
 @import "compass/typography/links"
 @import "compass/utilities/general/float"
 @import "compass/css3/images"
+@import "compass/css3/opacity"
+
+$total-columns: 11             // 11-column grid
+$column-width: 1.7em           // each column is 1.7em wide
+$gutter-width: 0.4em           // 0.4em gutters between columns
+$grid-padding: $gutter-width   // grid-padding equal to gutters
+$container-style: magic
+@import "susy"
+
+#whole
+  color: $color_txt
+  +font-vars($fonts-text)
+  background-color: white
+  // Note: use $color_bg after making a transparent astropi.org background
+  .pi
+    background:
+      image: image-url("/images/pi/rpi3_preview_featured.jpg")
+      position: top, center
+      repeat: no-repeat
+      size: 912px, 912px
+  #header
+    .tsu
+      +single-text-shadow(#fff949, -1px, -1px)
+    .tsd
+      +single-text-shadow(lighten(#bb0e42, 23), 1px, 1px)
+
+#packages
+  padding-bottom: 25px
+  .line
+    +container
+    //+susy-grid-background
+    margin-bottom: 0.5em
+    text-align: left
+    .blank
+      +span-columns(1)
+    .mid
+      text-align: center
+    .child
+      // Note: accept PRECIOUS overflow or min-width breaks the container magic
+      // only noticeable at sub-tablet form factors (i.e. smartphones perhaps)
+      // min-width: 3 * $column-width + 2 * $gutter-width
+      +font-vars($fonts-menu)
+      padding-top: 3px
+      //border: 1px dashed white
+      border: 2px solid indigo
+      +border-radius(5px)
+      background:
+        color: lighten(#76ae26, 9)
+      +opacity(0.85)
+      a
+        color: #bb0e42
+      &:hover
+        border: 2px solid #76ae26
+        background:
+          color: white
+        +opacity(0.9)
+        a
+          color: indigo
+    .arrow
+      color: #76ae26
+      .adep
+        border: 2px dashed #76ae26
+        +border-radius(27px)
+        padding:
+          top: 3px
+          bottom: 4px
+          left: 12px
+          right: 11px
+        +background-image(radial-gradient(19px 19px, yellow 1px, white 23px))
+        +opacity(0.95)
+      .opt-dep
+        color: #bb0e42
+    .l-room
+      +span-columns(3)
+    .s-room
+      +span-columns(1)
+    .l-dep
+      +push(3)
+      +span-columns(1)
+    .r-dep
+      +nth-omega(1)
+    .m-room
+      +push(4)
+      +span-columns(3)
+      text-align: center
+    .o-room
+      +span-columns(3 omega)
+
+.platform
+  margin-bottom: 39px
 
 .hidden
   visibility: hidden
@@ -24,7 +114,7 @@ h1
   color: darken(green, 13)
   border: 2px dashed #fff949
   +border-radius(400px, 69px)
-  +single-box-shadow(darken(green, 12), 0px, 2px, 5px, 1px)
+  +single-box-shadow(darken(#76ae26, 6), 0px, 2px, 5px, 1px)
   +single-text-shadow(#fff949, 0px, -1px)
 
 #cats
@@ -40,7 +130,8 @@ a
 
 .cat
   background-color: white
-  border: 1px solid orange
+  border: 2px solid orange
+  +opacity(0.93)
   +border-radius(5px)
   padding:
     top: $cat-v-pad
@@ -52,7 +143,8 @@ a
     right: $cat-space
   +link-colors(darkgreen, indigo)
   &:hover
-    border: 1px solid indigo
+    border: 2px solid indigo
+    +opaque
 
 a.cat
   +unstyled-link
@@ -79,22 +171,19 @@ a.cat
 .push
   padding-top: 12px
 
-#bottom
 
-#highlight
-  height: 3em
-  width: 99%
-  border-top: 2px dashed purple
-  +border-radius(999px, 33px)
+$sunny-base: lighten(yellow, 32)
 
-#whole
-  color: $color_txt
-  +font-vars($fonts-text)
-  background-color: white
-  // Note: use $color_bg after making a transparent astropi.org background
-  .pi
-    background:
-      image: image-url("/images/pi/rpi3_preview_featured.jpg")
-      position: top, center
-      repeat: no-repeat
+#sunny
+  width: 100%
+  height: 150px
+  +background-image(linear-gradient(white, $sunny-base))
+
+  #highlight
+    width: 99%
+    height: 3em
+    border-top: 2px dashed #bb0e42
+    +border-radius(999px, 33px)
+    +single-box-shadow($sunny-base, 0px, 0px, 112px, 99px)
+    background-color: $sunny-base
 

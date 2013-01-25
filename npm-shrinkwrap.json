@@ -1,6 +1,6 @@
 {
   "name": "astrolin",
-  "version": "0.0.9-3",
+  "version": "0.0.10",
   "dependencies": {
     "coffee-script": {
       "version": "1.4.0"
@@ -144,11 +144,11 @@
             "async": {
               "version": "0.1.22"
             },
-            "eyes": {
-              "version": "0.1.8"
-            },
             "docco": {
               "version": "0.3.0"
+            },
+            "eyes": {
+              "version": "0.1.8"
             }
           }
         },
@@ -419,6 +419,39 @@
         }
       }
     },
+    "node-inspector": {
+      "version": "0.1.10",
+      "dependencies": {
+        "socket.io": {
+          "version": "0.8.7",
+          "dependencies": {
+            "socket.io-client": {
+              "version": "0.8.7",
+              "dependencies": {
+                "uglify-js": {
+                  "version": "1.0.6"
+                },
+                "websocket-client": {
+                  "version": "1.0.0"
+                },
+                "xmlhttprequest": {
+                  "version": "1.2.2"
+                }
+              }
+            },
+            "policyfile": {
+              "version": "0.0.4"
+            },
+            "redis": {
+              "version": "0.6.7"
+            }
+          }
+        },
+        "paperboy": {
+          "version": "0.0.3"
+        }
+      }
+    },
     "police": {
       "version": "0.3.0",
       "dependencies": {
@@ -502,39 +535,6 @@
         },
         "pkginfo": {
           "version": "0.2.3"
-        }
-      }
-    },
-    "node-inspector": {
-      "version": "0.1.10",
-      "dependencies": {
-        "socket.io": {
-          "version": "0.8.7",
-          "dependencies": {
-            "socket.io-client": {
-              "version": "0.8.7",
-              "dependencies": {
-                "uglify-js": {
-                  "version": "1.0.6"
-                },
-                "websocket-client": {
-                  "version": "1.0.0"
-                },
-                "xmlhttprequest": {
-                  "version": "1.2.2"
-                }
-              }
-            },
-            "policyfile": {
-              "version": "0.0.4"
-            },
-            "redis": {
-              "version": "0.6.7"
-            }
-          }
-        },
-        "paperboy": {
-          "version": "0.0.3"
         }
       }
     }

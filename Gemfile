@@ -5,17 +5,23 @@ source "http://rubygems.org"
 
 gem "sass"
 gem "compass"
+gem "susy", "~> 1.0.5"
 
 gem "guard"
+gem "guard-compass"
+gem "guard-livereload"
+
 gem "growl"
-gem "rb-fsevent"
-gem "guard-compass",
-    :git => "https://github.com/welaika/guard-compass.git" # does growl
+gem "rb-fsevent", :require => false # Mac
+gem 'rb-inotify', :require => false # Linux
+gem "yajl-ruby"
 
 gem "git"
+gem "omglog"
+gem "git-smart"
+
 gem "bcat"
 gem "ronn"
-gem "git-smart"
 gem "travis-lint"
 
 gem "heroku"
