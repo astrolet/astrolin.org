@@ -5,6 +5,7 @@
 @import "compass/css3/box-shadow"
 @import "compass/css3/text-shadow"
 @import "compass/typography/links"
+@import "compass/utilities/links/link-colors"
 @import "compass/utilities/general/float"
 @import "compass/css3/images"
 @import "compass/css3/opacity"
@@ -54,12 +55,13 @@ $container-style: magic
       border: 2px solid indigo
       +border-radius(5px)
       background:
-        color: lighten(#76ae26, 9)
+        color: lighten(#76ae26, 13)
       +opacity(0.85)
       a
         color: #bb0e42
       &:hover
         border: 2px solid #76ae26
+        //+single-box-shadow(orange, 0px, 0px, 3px, 0px)
         background:
           color: white
         +opacity(0.9)
@@ -130,8 +132,8 @@ a
 
 .cat
   background-color: white
-  border: 2px solid orange
-  +opacity(0.93)
+  border: 2px solid #bb0e42
+  +opacity(0.91)
   +border-radius(5px)
   padding:
     top: $cat-v-pad
@@ -144,10 +146,12 @@ a
   +link-colors(darkgreen, indigo)
   &:hover
     border: 2px solid indigo
+    +single-box-shadow(#bb0e42, 0px, 0px, 3px, 0px)
     +opaque
 
 a.cat
   +unstyled-link
+  +link-colors(darken(darkgreen, 12), indigo)
 
 .theres
   overflow: none
@@ -180,10 +184,11 @@ $sunny-base: lighten(yellow, 32)
   +background-image(linear-gradient(white, $sunny-base))
 
   #highlight
-    width: 99%
+    width: 97%
     height: 3em
-    border-top: 2px dashed #bb0e42
-    +border-radius(999px, 33px)
+    border-top: 3px dashed #bb0e42
+    padding-top: 19px
+    +border-radius(969px, 35px)
     +single-box-shadow($sunny-base, 0px, 0px, 112px, 99px)
     background-color: $sunny-base
 
