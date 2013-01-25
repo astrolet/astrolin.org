@@ -65,9 +65,9 @@ block content
     #sunny
       h2#bottom.project.push
         - each cat in cats
-          a.cat(href="/cat/" + cat) #{cat}
+          a.cat.front-cat(href="/cat/" + cat) #{cat}
         p#highlight.push
-          a.cat(href= "http://astrolet.co") back
-          a.cat(href= "/data") have
-          a.cat(href= "https://github.com/astrolet/astrolin/wiki") wiki
+          a.cat.front-cat(href= "http://astrolet.co") back
+          a.cat.front-cat(href= "/data") have
+          a.cat.front-cat(href= "https://github.com/astrolet/astrolin/wiki") wiki
 
