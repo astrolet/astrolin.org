@@ -1,6 +1,6 @@
 {
   "name": "astrolin",
-  "version": "0.0.10",
+  "version": "0.0.10-1",
   "dependencies": {
     "coffee-script": {
       "version": "1.4.0"
