@@ -12,3 +12,6 @@ project_type = :stand_alone
 output_style = :compressed
 #relative_assets = true
 preferred_syntax = :sass
+
+require "susy"
+
