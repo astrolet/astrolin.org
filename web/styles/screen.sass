@@ -130,7 +130,8 @@ a
 
 .cat
   background-color: white
-  border: 1px solid orange
+  border: 2px solid orange
+  +opacity(0.9)
   +border-radius(5px)
   padding:
     top: $cat-v-pad
@@ -142,7 +143,8 @@ a
     right: $cat-space
   +link-colors(darkgreen, indigo)
   &:hover
-    border: 1px solid indigo
+    border: 2px solid indigo
+    +opaque
 
 a.cat
   +unstyled-link
@@ -180,7 +182,7 @@ $sunny-base: lighten(yellow, 32)
   #highlight
     width: 99%
     height: 3em
-    border-top: 2px dashed purple
+    border-top: 2px dashed #bb0e42
     +border-radius(999px, 33px)
     +single-box-shadow($sunny-base, 0px, 0px, 112px, 99px)
     background-color: $sunny-base
