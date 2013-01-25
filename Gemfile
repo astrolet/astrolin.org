@@ -5,6 +5,7 @@ source "http://rubygems.org"
 
 gem "sass"
 gem "compass"
+gem "susy", "~> 1.0.5"
 
 gem "guard"
 gem "guard-compass"
