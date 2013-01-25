@@ -61,7 +61,6 @@ $container-style: magic
         color: #bb0e42
       &:hover
         border: 2px solid #76ae26
-        //+single-box-shadow(orange, 0px, 0px, 3px, 0px)
         background:
           color: white
         +opacity(0.9)
@@ -132,7 +131,7 @@ a
 
 .cat
   background-color: white
-  border: 2px solid #bb0e42
+  border: 2px solid orange
   +opacity(0.91)
   +border-radius(5px)
   padding:
@@ -148,6 +147,9 @@ a
     border: 2px solid indigo
     +single-box-shadow(#bb0e42, 0px, 0px, 3px, 0px)
     +opaque
+
+.front-cat
+  border: 2px solid #bb0e42
 
 a.cat
   +unstyled-link
