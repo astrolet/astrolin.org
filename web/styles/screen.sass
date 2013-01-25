@@ -169,9 +169,19 @@ a.cat
 .push
   padding-top: 12px
 
-#highlight
-  height: 3em
-  width: 99%
-  border-top: 2px dashed purple
-  +border-radius(999px, 33px)
+
+$sunny-base: lighten(yellow, 32)
+
+#sunny
+  width: 100%
+  height: 150px
+  +background-image(linear-gradient(white, $sunny-base))
+
+  #highlight
+    width: 99%
+    height: 3em
+    border-top: 2px dashed purple
+    +border-radius(999px, 33px)
+    +single-box-shadow($sunny-base, 0px, 0px, 112px, 99px)
+    background-color: $sunny-base
 
