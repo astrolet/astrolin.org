@@ -116,7 +116,7 @@ module.exports =
 
   # Links for a project - basically, its cats.
   linkage: (project) ->
-    details = @projects[project]
+    details = projects[project]
     if details is undefined
       { "none such showing yet": "http://github.com/astrolet" }
     else
