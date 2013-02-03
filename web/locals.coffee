@@ -64,7 +64,7 @@ for project, details of projects
     source: project
     c9: project
     issues: "#{project}/issues"
-    docs: "#{project}"
+    docs: project
 
   # Special case: GitHub issues are disabled by default -
   # they can be true (using default url), a custom url, or false by default.
