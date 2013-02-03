@@ -2,8 +2,8 @@ path = require 'path'
 
 hosts =
   development:
-    name: "localhost"
-    port: 8001
+    name: process.env.IP or "localhost"
+    port: process.env.PORT or 8001
   production:
     name: "astrolin.org"
     port: 80
