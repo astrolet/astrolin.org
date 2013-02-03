@@ -138,7 +138,7 @@ task 'run', "the web / servers", (options) ->
   options.env or= 'development'
   serving = "NODE_ENV=#{options.env}"
   if options.env is 'development'
-    serving = "#{serving} node_modules/.bin/node-dev --debug ./server.js"
+    serving = "#{serving} node_modules/.bin/node-dev ./server.js"
   else
     serving += " node ./server.js"
   serving += " | bcat" if options.bcat?
@@ -153,7 +153,7 @@ task 'dev', "web programming / workflow", ->
   commands = [
     invoke 'run'
     command 'bundle exec guard'
-    command 'node_modules/.bin/node-inspector'
+    # command 'node_modules/.bin/node-inspector'
   ]
   parallel commands, (err) -> throw err if err
 

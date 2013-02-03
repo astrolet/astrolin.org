@@ -7,13 +7,14 @@ module.exports =
   keys: (a) ->
     _.keys(a)
 
-  cats: ["docs", "source", "issues", "tracker", "package"]
+  cats: ["docs", "source", "c9", "issues", "tracker", "package"]
 
   # = key, false (hides it), or full url
   projects:
     terra:
       docs: false
       tracker: "265847"
+      c9: false
     upon:
       issues: true
       tracker: "265847"
@@ -30,12 +31,14 @@ module.exports =
     sin:
       tracker: "203533"
       package: "gravity"
+      c9: false
     pi:
       org: "astropi"
       project: "astropi"
       docs: "https://github.com/astropi/astropi#readme"
       issues: true
       tracker: "265847"
+      c9: false
     astrolin:
       issues: true
       tracker: "265847"
@@ -58,11 +61,12 @@ module.exports =
     defaults =
       package: project
       source: project
+      c9: project
       issues: "#{project}/issues"
       docs: "#{project}"
 
-    # special case: github issues are usually disabled for now
-    # issues can be true (using default url), a custom url, or false by default
+    # Special case: GitHub issues are disabled by default -
+    # they can be true (using default url), a custom url, or false by default.
     if details.issues?
       if details.issues is true
         delete details.issues
@@ -82,6 +86,9 @@ module.exports =
               links[key] = "http://search.npmjs.org/#/#{details[key]}"
             when "tracker"
               links[key] = "https://www.pivotaltracker.com/projects/#{details[key]}"
+            when "c9"
+              unless details[key] is false
+                links[key] = "https://c9.io/astrolet/#{details[key]}"
             when "source", "issues"
               links[key] = "#{github}#{details[key]}"
             when "docs"
