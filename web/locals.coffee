@@ -98,6 +98,17 @@ for project, details of projects
   projects[proKey].links = links
 
 
+# Category links across projects.
+i=0
+for key in _.pluck categories, "id"
+  links = {}
+  for project in _.keys projects
+    all = projects[project].links
+    links[project] = all[key] if all[key]?
+  categories[i].links = links
+  i++
+
+
 module.exports =
 
   keys: (o) -> _.keys(o)
@@ -106,7 +117,7 @@ module.exports =
 
   projects: projects
 
-  # Links for a project.
+  # Links of project - basically, its cats.
   linkage: (project) ->
     details = @projects[project]
     if details is undefined
@@ -114,11 +125,6 @@ module.exports =
     else
       details.links
 
-  # Category links across projects (a little bit sloppy, but no big deal)
-  catLinks: (category) ->
-    links = {}
-    for project in _.keys @projects
-      all = @linkage project
-      links[project] = all[category] if all[category]?
-    links
+  # Links per category for all projects that have such.
+  linking: (category) -> (_.where categories, id: category)[0].links
 
