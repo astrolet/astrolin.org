@@ -4,12 +4,12 @@ _ = require 'underscore'
 
 # Categories for project links.
 categories =
-  [ { id: "docs" }
-  , { id: "source" }
-  , { id: "c9" }
-  , { id: "issues" }
-  , { id: "tracker" }
-  , { id: "package" }
+  [ { id: "docs", desc: "Some documentation" }
+  , { id: "source", desc: "Forkable on GitHub" }
+  , { id: "c9", desc: "Try / develop on Cloud9" }
+  , { id: "issues", desc: "GitHub Issues enabled" }
+  , { id: "tracker", desc: "Managed with Pivotal Tracker" }
+  , { id: "package", desc: "Node packages" }
   ]
 
 # Project customization by category plus possibly with some extra configuration.
@@ -99,6 +99,7 @@ for project, details of projects
 
 
 # Category links across projects.
+# Could be improved - this block runs just once, so maybe later...
 i=0
 for key in _.pluck categories, "id"
   links = {}
@@ -126,5 +127,8 @@ module.exports =
   cats: _.pluck categories, "id"
 
   # Links per category for all projects that have such.
-  linking: (category) -> (_.findWhere categories, id: category).links
+  linking: (category) -> (_.findWhere categories, id: category)?.links or {}
+
+  # Category description
+  catInfo: (category) -> (_.findWhere categories, id: category)?.desc or 'Unknown'
 

@@ -1,6 +1,7 @@
 extends layout
 
 block content
+  p#info= catInfo(category)
   &#8595;
   p#cats
     - var links = linking(category)
