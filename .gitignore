@@ -5,6 +5,7 @@ log
 .hgignore
 .hg/*
 .svn/*
+.c9revisions/*
 
 docs
 pages

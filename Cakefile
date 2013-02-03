@@ -129,6 +129,7 @@ task 'pages:publish', "publish the pages - builds them first", ->
 
 
 # Run the web app with options.
+option '-d', '--debug', "\t  just for development: `node-dev --debug`, and start `node-inspector`"
 option '-b', '--bcat', "\t  pipe via `bcat` to the browser as if it's the console"
 option '-e', '--env [NODE_ENV]', "\t  set the NODE_ENV for `cake run` task (or 'development')"
 
@@ -138,7 +139,7 @@ task 'run', "the web / servers", (options) ->
   options.env or= 'development'
   serving = "NODE_ENV=#{options.env}"
   if options.env is 'development'
-    serving = "#{serving} node_modules/.bin/node-dev --debug ./server.js"
+    serving = "#{serving} node_modules/.bin/node-dev #{('--debug' if options.debug?) or ''} ./server.js"
   else
     serving += " node ./server.js"
   serving += " | bcat" if options.bcat?
@@ -149,11 +150,11 @@ task 'run', "the web / servers", (options) ->
 
 
 # Run in development mode.
-task 'dev', "web programming / workflow", ->
+task 'dev', "web programming / workflow", (options) ->
   commands = [
     invoke 'run'
     command 'bundle exec guard'
-    command 'node_modules/.bin/node-inspector'
+    command 'node_modules/.bin/node-inspector' if options.debug?
   ]
   parallel commands, (err) -> throw err if err
 

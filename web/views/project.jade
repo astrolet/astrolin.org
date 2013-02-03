@@ -3,7 +3,7 @@ extends layout
 block content
   &#8595;
   p
-    - var links = linkage(project, projects[project])
+    - var links = linkage(project)
     - each val, key in links
       h2.somewhere
         a(href=val) #{key}

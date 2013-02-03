@@ -130,7 +130,7 @@ process.addListener 'uncaughtException', (err) ->
   util.puts "Uncaught Exception: #{err.toString()}"
 
 # Start the server.
-port = parseInt(process.env.PORT || process.env.C9_PORT || 8001)
-app.listen port
-console.log "Astrolin has started on http://localhost:%s", port
-
+port = parseInt(process.env.PORT || 8001)
+host = process.env.IP || '127.0.0.1'
+app.listen port, host
+console.log "Astrolin has started on http://#{host}:#{port}"

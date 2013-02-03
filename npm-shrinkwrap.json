@@ -1,12 +1,12 @@
 {
   "name": "astrolin",
-  "version": "0.0.10-1",
+  "version": "0.0.11",
   "dependencies": {
     "coffee-script": {
       "version": "1.4.0"
     },
     "underscore": {
-      "version": "1.4.3"
+      "version": "1.4.4"
     },
     "director": {
       "version": "1.1.10"
@@ -23,7 +23,7 @@
       "version": "0.2.3"
     },
     "express": {
-      "version": "3.0.6",
+      "version": "3.1.0",
       "dependencies": {
         "connect": {
           "version": "2.7.2",
@@ -91,7 +91,7 @@
       }
     },
     "marked": {
-      "version": "0.2.7"
+      "version": "0.2.8"
     },
     "heck": {
       "version": "0.0.4",
@@ -123,14 +123,24 @@
           "version": "1.4.0"
         },
         "underscore": {
-          "version": "1.4.3"
+          "version": "1.4.4"
         },
         "backbone": {
-          "version": "0.5.3"
+          "version": "0.5.3",
+          "dependencies": {
+            "underscore": {
+              "version": "1.4.4"
+            }
+          }
         },
         "backbone-rel": {
           "version": "0.3.0-1",
-          "from": "https://github.com/orlin/Backbone-relational/tarball/0.3.0-1"
+          "from": "https://github.com/orlin/Backbone-relational/tarball/0.3.0-1",
+          "dependencies": {
+            "underscore": {
+              "version": "1.4.4"
+            }
+          }
         },
         "there": {
           "version": "0.1.0",
@@ -139,16 +149,16 @@
               "version": "1.4.0"
             },
             "underscore": {
-              "version": "1.4.3"
+              "version": "1.4.4"
             },
             "async": {
               "version": "0.1.22"
             },
-            "docco": {
-              "version": "0.3.0"
-            },
             "eyes": {
               "version": "0.1.8"
+            },
+            "docco": {
+              "version": "0.3.0"
             }
           }
         },
@@ -159,7 +169,7 @@
               "version": "1.4.0"
             },
             "underscore": {
-              "version": "1.4.3"
+              "version": "1.4.4"
             },
             "underscore.string": {
               "version": "2.3.1"
@@ -173,11 +183,11 @@
             "docco": {
               "version": "0.3.0"
             },
-            "eyes": {
-              "version": "0.1.7"
-            },
             "jsonify": {
               "version": "0.0.0"
+            },
+            "eyes": {
+              "version": "0.1.7"
             },
             "should": {
               "version": "0.6.1"

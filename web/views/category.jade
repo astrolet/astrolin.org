@@ -1,9 +1,10 @@
 extends layout
 
 block content
+  p#info= catInfo(category)
   &#8595;
   p#cats
-    - var links = catLinks(category)
+    - var links = linking(category)
     - each val, key in links
       h2.project
         a(href=val) #{key.toUpperCase()}
