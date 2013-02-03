@@ -111,19 +111,19 @@ for key in _.pluck categories, "id"
 
 module.exports =
 
-  keys: (o) -> _.keys(o)
+  # Projects:
+  prks: _.keys projects
 
-  cats: _.pluck categories, "id"
-
-  projects: projects
-
-  # Links of project - basically, its cats.
+  # Links for a project - basically, its cats.
   linkage: (project) ->
     details = @projects[project]
     if details is undefined
       { "none such showing yet": "http://github.com/astrolet" }
     else
       details.links
+
+  # Categories:
+  cats: _.pluck categories, "id"
 
   # Links per category for all projects that have such.
   linking: (category) -> (_.where categories, id: category)[0].links
