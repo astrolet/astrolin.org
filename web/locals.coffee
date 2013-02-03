@@ -1,50 +1,61 @@
-# Helpers, i.e. locals for this express.js app.
+# Helpers, i.e. the locals for this Express app.
 
 _ = require 'underscore'
 
+# Categories for project links.
+categories =
+  [ { id: "docs" }
+  , { id: "source" }
+  , { id: "c9" }
+  , { id: "issues" }
+  , { id: "tracker" }
+  , { id: "package" }
+  ]
+
+# Project customization by category plus possibly with some extra configuration.
+# Use a key, false to hide something, or full url is ok too.
+projects =
+  terra:
+    docs: false
+    tracker: "265847"
+    c9: false
+  upon:
+    issues: true
+    tracker: "265847"
+  archai:
+    issues: true
+    tracker: "265847"
+  eden:
+    tracker: "203533"
+  precious:
+    issues: true
+    tracker: "203533"
+  there:
+    tracker: "203533"
+  sin:
+    tracker: "203533"
+    package: "gravity"
+    c9: false
+  pi:
+    org: "astropi"
+    project: "astropi"
+    docs: "https://github.com/astropi/astropi#readme"
+    issues: true
+    tracker: "265847"
+    c9: false
+  astrolin:
+    issues: true
+    tracker: "265847"
+
+
 module.exports =
 
-  keys: (a) ->
-    _.keys(a)
+  keys: (o) -> _.keys(o)
 
-  cats: ["docs", "source", "c9", "issues", "tracker", "package"]
+  cats: _.pluck categories, "id"
 
-  # = key, false (hides it), or full url
-  projects:
-    terra:
-      docs: false
-      tracker: "265847"
-      c9: false
-    upon:
-      issues: true
-      tracker: "265847"
-    archai:
-      issues: true
-      tracker: "265847"
-    eden:
-      tracker: "203533"
-    precious:
-      issues: true
-      tracker: "203533"
-    there:
-      tracker: "203533"
-    sin:
-      tracker: "203533"
-      package: "gravity"
-      c9: false
-    pi:
-      org: "astropi"
-      project: "astropi"
-      docs: "https://github.com/astropi/astropi#readme"
-      issues: true
-      tracker: "265847"
-      c9: false
-    astrolin:
-      issues: true
-      tracker: "265847"
+  projects: projects
 
-  # TODO: w/o a view?
-  projectKeys: -> JSON.stringify { projects: _.keys this.projects }
 
   # Project links
   linkage: (project, details) ->
@@ -94,6 +105,7 @@ module.exports =
             when "docs"
               links[key] = "#{ghpages}#{details[key]}"
     links
+
 
   # Category links across projects (a little bit sloppy, but no big deal)
   catLinks: (category) ->
