@@ -126,5 +126,5 @@ module.exports =
   cats: _.pluck categories, "id"
 
   # Links per category for all projects that have such.
-  linking: (category) -> (_.where categories, id: category)[0].links
+  linking: (category) -> (_.findWhere categories, id: category).links
 
