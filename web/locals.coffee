@@ -1,105 +1,134 @@
-# Helpers, i.e. locals for this express.js app.
+# Helpers, i.e. the locals for this Express app.
 
 _ = require 'underscore'
 
+# Categories for project links.
+categories =
+  [ { id: "docs", desc: "Some documentation" }
+  , { id: "source", desc: "Forkable on GitHub" }
+  , { id: "c9", desc: "Try / develop on Cloud9" }
+  , { id: "issues", desc: "GitHub Issues enabled" }
+  , { id: "tracker", desc: "Managed with Pivotal Tracker" }
+  , { id: "package", desc: "Node packages" }
+  ]
+
+# Project customization by category plus possibly with some extra configuration.
+# Use a key, false to hide something, or full url is ok too.
+projects =
+  terra:
+    docs: false
+    tracker: "265847"
+    c9: false
+  upon:
+    issues: true
+    tracker: "265847"
+  archai:
+    issues: true
+    tracker: "265847"
+  eden:
+    tracker: "203533"
+  precious:
+    issues: true
+    tracker: "203533"
+  there:
+    tracker: "203533"
+  sin:
+    tracker: "203533"
+    package: "gravity"
+    c9: false
+  pi:
+    org: "astropi"
+    project: "astropi"
+    docs: "https://github.com/astropi/astropi#readme"
+    issues: true
+    tracker: "265847"
+    c9: false
+  astrolin:
+    issues: true
+    tracker: "265847"
+
+
+# Initialize project links and perhaps a little more.
+for project, details of projects
+
+  # override the organization or project names
+  org = details.org ? "astrolet"
+  proKey = project
+  project = details.project if details.project?
+
+  # defaults
+  github = "https://github.com/#{org}/"
+  ghpages = "http://#{org}.github.com/"
+  defaults =
+    package: project
+    source: project
+    c9: project
+    issues: "#{project}/issues"
+    docs: project
+
+  # Special case: GitHub issues are disabled by default -
+  # they can be true (using default url), a custom url, or false by default.
+  if details.issues?
+    if details.issues is true
+      delete details.issues
+  else
+    delete defaults.issues
+
+  details = _.defaults(details, defaults)
+  links = {}
+
+  for key in _.pluck categories, "id"
+    if details[key]? and details[key] isnt false
+      if details[key].match /^http/
+        links[key] = details[key]
+      else
+        switch key
+          when "package"
+            links[key] = "http://search.npmjs.org/#/#{details[key]}"
+          when "tracker"
+            links[key] = "https://www.pivotaltracker.com/projects/#{details[key]}"
+          when "c9"
+            unless details[key] is false
+              links[key] = "https://c9.io/astrolet/#{details[key]}"
+          when "source", "issues"
+            links[key] = "#{github}#{details[key]}"
+          when "docs"
+            links[key] = "#{ghpages}#{details[key]}"
+
+  projects[proKey].links = links
+
+
+# Category links across projects.
+# Could be improved - this block runs just once, so maybe later...
+i=0
+for key in _.pluck categories, "id"
+  links = {}
+  for project in _.keys projects
+    all = projects[project].links
+    links[project] = all[key] if all[key]?
+  categories[i].links = links
+  i++
+
+
 module.exports =
 
-  keys: (a) ->
-    _.keys(a)
+  # Projects:
+  prks: _.keys projects
 
-  cats: ["docs", "source", "c9", "issues", "tracker", "package"]
-
-  # = key, false (hides it), or full url
-  projects:
-    terra:
-      docs: false
-      tracker: "265847"
-      c9: false
-    upon:
-      issues: true
-      tracker: "265847"
-    archai:
-      issues: true
-      tracker: "265847"
-    eden:
-      tracker: "203533"
-    precious:
-      issues: true
-      tracker: "203533"
-    there:
-      tracker: "203533"
-    sin:
-      tracker: "203533"
-      package: "gravity"
-      c9: false
-    pi:
-      org: "astropi"
-      project: "astropi"
-      docs: "https://github.com/astropi/astropi#readme"
-      issues: true
-      tracker: "265847"
-      c9: false
-    astrolin:
-      issues: true
-      tracker: "265847"
-
-  # TODO: w/o a view?
-  projectKeys: -> JSON.stringify { projects: _.keys this.projects }
-
-  # Project links
-  linkage: (project, details) ->
+  # Links for a project - basically, its cats.
+  linkage: (project) ->
+    details = projects[project]
     if details is undefined
-      return { "none such showing yet": "http://github.com/astrolet" }
-
-    # override the organization or project names
-    org = details.org ? "astrolet"
-    project = details.project if details.project?
-
-    # defaults
-    github = "https://github.com/#{org}/"
-    ghpages = "http://#{org}.github.com/"
-    defaults =
-      package: project
-      source: project
-      c9: project
-      issues: "#{project}/issues"
-      docs: "#{project}"
-
-    # Special case: GitHub issues are disabled by default -
-    # they can be true (using default url), a custom url, or false by default.
-    if details.issues?
-      if details.issues is true
-        delete details.issues
+      { "none such showing yet": "http://github.com/astrolet" }
     else
-      delete defaults.issues
+      details.links
 
-    details = _.defaults(details, defaults)
-    links = {}
+  # Categories:
+  cats: _.pluck categories, "id"
 
-    for key in this.cats
-      if details[key]? and details[key] isnt false
-        if details[key].match /^http/
-          links[key] = details[key]
-        else
-          switch key
-            when "package"
-              links[key] = "http://search.npmjs.org/#/#{details[key]}"
-            when "tracker"
-              links[key] = "https://www.pivotaltracker.com/projects/#{details[key]}"
-            when "c9"
-              unless details[key] is false
-                links[key] = "https://c9.io/astrolet/#{details[key]}"
-            when "source", "issues"
-              links[key] = "#{github}#{details[key]}"
-            when "docs"
-              links[key] = "#{ghpages}#{details[key]}"
-    links
+  # Links per category for all projects that have such.
+  linking: (category) -> (_.findWhere categories, id: category)?.links or {}
 
-  # Category links across projects (a little bit sloppy, but no big deal)
-  catLinks: (category) ->
-    links = {}
-    for project, details of this.projects
-      all = this.linkage(project, details)
-      links[project] = all[category] if all[category]?
-    links
+  # Category description
+  catInfo: (category) -> (_.findWhere categories, id: category)?.desc or 'Unknown'
 
