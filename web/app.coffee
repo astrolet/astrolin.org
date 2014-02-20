@@ -131,6 +131,6 @@ process.addListener 'uncaughtException', (err) ->
 
 # Start the server.
 port = parseInt(process.env.PORT || 8001)
-host = process.env.IP || '127.0.0.1'
+host = process.env.IP || '127.0.0.1' # heroku config:add IP=0.0.0.0
 app.listen port, host
 console.log "Astrolin has started on http://#{host}:#{port}"
