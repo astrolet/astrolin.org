@@ -22,7 +22,7 @@ app.locals.pretty = true if dev
 # Routing with Flatiron's Director.
 director = require 'director'
 router = new director.http.Router
-  "/": get: -> @res.render "index"
+  "/": get: -> @res.render "index",
     title: "Welcome" # Home page
     forehead: undefined # cached otherwise
 
@@ -52,7 +52,7 @@ router.get "/cat/:category", (cat) ->
 # What the ephemeris provides automatically.
 # This is about precious / gravity together with there & lin.
 router.get "/data", ->
-  @res.render "data"
+  @res.render "data",
     title: "Ephemeris Data"
     headest: ""
     forehead: "<br/>having"
@@ -114,8 +114,7 @@ app.configure ->
         if req.method is 'GET' or req.method is 'HEAD'
           next()
         else
-          heck.handler req, res, "
-Route '#{req.url}' not found, the '#{req.method}' method not allowed further.",
+          heck.handler req, res, "Route '#{req.url}' not found, the '#{req.method}' method not allowed further.",
             405
 
   # Cloud9's vfs for static files
