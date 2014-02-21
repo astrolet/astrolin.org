@@ -16,7 +16,7 @@
 , "directories": { "web": "./web" }
 , "main": "server"
 , "dependencies":
-  { "coffee-script": "*"
+  { "coffee-script": "1.4.x"
   , "underscore": "*"
   , "director": "*"
   , "vfs-local": "*"

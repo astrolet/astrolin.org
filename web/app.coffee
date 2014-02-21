@@ -22,7 +22,7 @@ app.locals.pretty = true if dev
 # Routing with Flatiron's Director.
 director = require 'director'
 router = new director.http.Router
-  "/": get: -> @res.render "index"
+  "/": get: -> @res.render "index",
     title: "Welcome" # Home page
     forehead: undefined # cached otherwise
 
@@ -52,7 +52,7 @@ router.get "/cat/:category", (cat) ->
 # What the ephemeris provides automatically.
 # This is about precious / gravity together with there & lin.
 router.get "/data", ->
-  @res.render "data"
+  @res.render "data",
     title: "Ephemeris Data"
     headest: ""
     forehead: "<br/>having"
