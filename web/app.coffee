@@ -114,8 +114,7 @@ app.configure ->
         if req.method is 'GET' or req.method is 'HEAD'
           next()
         else
-          heck.handler req, res, "
-Route '#{req.url}' not found, the '#{req.method}' method not allowed further.",
+          heck.handler req, res, "Route '#{req.url}' not found, the '#{req.method}' method not allowed further.",
             405
 
   # Cloud9's vfs for static files
