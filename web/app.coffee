@@ -14,7 +14,6 @@ dev = if process.env.NODE_ENV is 'development' then true else false
 app_path = path.normalize __dirname
 
 # Astrolet libs, data and helper locals.
-theres = require('archai').theres()
 app.locals = merge require('./locals'), app.locals
 app.locals.pretty = true if dev
 
@@ -48,15 +47,6 @@ router.get "/cat/:category", (cat) ->
     headest: ""
     category: cat
     forehead: "<br/>" + cat.toLowerCase()
-
-# What the ephemeris provides automatically.
-# This is about precious / gravity together with there & lin.
-router.get "/data", ->
-  @res.render "data",
-    title: "Ephemeris Data"
-    headest: ""
-    forehead: "<br/>having"
-    theres: theres
 
 # Observability status from http://vimeo.com/52714202
 router.get "/health", ->
