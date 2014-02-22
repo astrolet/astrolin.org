@@ -15,59 +15,30 @@ block content
           .l-room &nbsp;
           .s-room &nbsp;
           .l-room.mid.child
-            a(href= "/to/eden") EDEN
-        .line
-          .l-dep.mid.arrow
-            span.adep &#x21D9;
-          .r-dep.mid.arrow
-            span.adep.opt-dep &#x21D8;
-        .line
-          .l-room.mid.child
-            a(href= "/to/archai") ARCHAI
-          .s-room &nbsp;
-          .l-room.mid.arrow
-            span.adep &#x21D3;
-          .o-room.mid.child
             a(href= "/to/precious") PRECIOUS
         .line
           .l-dep.mid.arrow
-            span.adep &#x21D8;
-          .r-dep.mid.arrow
             span.adep &#x21D9;
+          .r-dep.mid.arrow
+            span.adep &#x21D8;
         .line
-          .l-room.mid.arrow
-            span.adep &#x21D3;
-          .s-room &nbsp;
           .l-room.mid.child
             a(href= "/to/upon") UPON
-          .o-room.mid.arrow
-            span.adep &#x21D3;
-        .line.blank &nbsp;
-        .line
-          .l-room.mid.child
-            a(href= "/to/there") THERE
+          .s-room &nbsp;
           .o-room.mid.child
             a(href= "/to/sin") SIN
         .line.blank &nbsp;
         .line
           .m-room.child
-            a(href= "/to/terra") TERRA
-
-      - each project in ["pi", "astrolin"]
-        .platform
-          - if(project === "pi")
-            a(href= "/to/" + project)
-              img(src= "/images/pi/Raspi-PGB001-300x267.png", width= "235px")
-          - else
-            h2.project
-              a(href= "/to/" + project) &nbsp;#{project.toUpperCase()}&nbsp;
+            a(href= "/to/") ASTROLIN
+        .line.blank &nbsp;
 
     #sunny
       h2#bottom.project.push
         - each cat in cats
           a.cat.front-cat(href="/cat/" + cat) #{cat}
         p#highlight.push
-          a.cat.front-cat(href= "http://astrolet.co") back
+          a.cat.front-cat(href= "http://astrolet.co") astrolet.co
           //-a.cat.front-cat(href= "/data") have
-          a.cat.front-cat(href= "https://github.com/astrolet/astrolin/wiki") wiki
+          //-a.cat.front-cat(href= "https://github.com/astrolet/astrolin/wiki") wiki
 
