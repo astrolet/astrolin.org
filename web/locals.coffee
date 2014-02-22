@@ -5,9 +5,9 @@ _ = require 'underscore'
 # Categories for project links.
 categories =
   [ { id: "docs", desc: "Some documentation" }
-  , { id: "source", desc: "Forkable on GitHub" }
-  , { id: "c9", desc: "Try / develop on Cloud9" }
   , { id: "issues", desc: "GitHub Issues enabled" }
+  , { id: "c9", desc: "Try / develop on Cloud9" }
+  , { id: "source", desc: "Forkable on GitHub" }
   , { id: "tracker", desc: "Managed with Pivotal Tracker" }
   , { id: "package", desc: "Node packages" }
   ]
