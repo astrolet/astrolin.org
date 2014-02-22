@@ -4,12 +4,11 @@ _ = require 'underscore'
 
 # Categories for project links.
 categories =
-  [ { id: "docs", desc: "Some documentation" }
-  , { id: "issues", desc: "GitHub Issues enabled" }
-  , { id: "c9", desc: "Try / develop on Cloud9" }
-  , { id: "source", desc: "Forkable on GitHub" }
-  , { id: "tracker", desc: "Managed with Pivotal Tracker" }
+  [ { id: "source", desc: "Forkable on GitHub" }
   , { id: "package", desc: "Node packages" }
+  , { id: "docs", desc: "Some documentation" }
+  , { id: "tracker", desc: "Managed with Pivotal Tracker" }
+  , { id: "issues", desc: "GitHub Issues enabled" }
   ]
 
 # Project customization by category plus possibly with some extra configuration.

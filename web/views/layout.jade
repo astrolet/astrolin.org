@@ -46,7 +46,7 @@ html(lang="en")
         h1
           span.tsu
             != headest + "&nbsp;"
-          span.tsu(style= "color: darkgreen")= chinese
+          span.tsu(style= "color: darkgreen")!= chinese + "&nbsp;"
       #torso
         block content
 
