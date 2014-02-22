@@ -46,13 +46,7 @@ html(lang="en")
         h1
           span.tsu
             != headest + "&nbsp;"
-          - if (typeof forehead === "undefined")
-            span.tsu(style= "color: darkgreen")
-              != chinese + "&nbsp;"
-            a.tsd(href="http://#{otherURL}")= other.toUpperCase()
-          - else
-            a(href="/")= chinese
-            != "&nbsp;" + forehead
+          span.tsu(style= "color: darkgreen")= chinese
       #torso
         block content
 

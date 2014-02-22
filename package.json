@@ -26,7 +26,6 @@
   , "marked": "*"
   , "heck": "*"
   , "deepmerge": "*"
-  , "archai": "*"
   }
 , "devDependencies":
   { "node-dev": "*"
@@ -38,7 +37,7 @@
   }
 , "scripts": { "test": "cake -w 13 test" }
 , "os" : [ "!win32" ]
-, "engines" : { "node" : "0.8.x", "npm": "1.1.x" }
+, "engines" : { "node" : "0.10.x" }
 , "licenses":
   [ { "type": "Unlicense"
     , "url" : "http://unlicense.org/"

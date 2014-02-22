@@ -43,7 +43,7 @@ task 'outdated', "is all up-to-date?", ->
 # It's the local police at the project's root.
 # Catches outdated modules that `cake outdated` doesn't report (major versions).
 task 'police', "checks npm package & dependencies with `police -l .`", ->
-  command "police -l ."
+  command "node_modules/.bin/police -l ."
 
 
 # Usually follows `cake outdated`.
@@ -71,7 +71,7 @@ task 'test', 'test the app, which should be started first', (options) ->
   args.unshift '--spec'     if options.spec
   args.unshift '--verbose'  if options.verbose
 
-  execute = "NODE_ENV=#{options.env} vows #{args.join ' '}"
+  execute = "NODE_ENV=#{options.env} node_modules/.bin/vows #{args.join ' '}"
   execute += " | bcat" if options.bcat?
 
   if options.wait > 0
