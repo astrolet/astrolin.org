@@ -71,7 +71,7 @@ task 'test', 'test the app, which should be started first', (options) ->
   args.unshift '--spec'     if options.spec
   args.unshift '--verbose'  if options.verbose
 
-  execute = "NODE_ENV=#{options.env} vows #{args.join ' '}"
+  execute = "NODE_ENV=#{options.env} ./node_modules/vows/bin/vows #{args.join ' '}"
   execute += " | bcat" if options.bcat?
 
   if options.wait > 0

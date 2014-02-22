@@ -16,8 +16,6 @@ astrolin = APIeasy.describe 'Astrolin'
       assert.isObject results = JSON.parse body
       assert.isArray results.projects
       )
-  .get("/data").expect(200)
   .get("/health").expect(200)
 
   .export(module)
-
