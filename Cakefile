@@ -153,8 +153,6 @@ task 'run', "the web / servers", (options) ->
 task 'dev', "web programming / workflow", (options) ->
   commands = [
     invoke 'run'
-    command 'bundle exec guard'
     command 'node_modules/.bin/node-inspector' if options.debug?
   ]
   parallel commands, (err) -> throw err if err
-

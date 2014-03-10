@@ -7,10 +7,6 @@ gem "sass"
 gem "compass"
 gem "susy", "~> 1.0.5"
 
-gem "guard"
-gem "guard-compass"
-gem "guard-livereload"
-
 gem "growl"
 gem "rb-fsevent", :require => false # Mac
 gem 'rb-inotify', :require => false # Linux
