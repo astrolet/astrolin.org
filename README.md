@@ -1,44 +1,31 @@
-# [![Build Status](https://secure.travis-ci.org/astrolet/astrolin.png)](http://travis-ci.org/astrolet/astrolin)
-# astrolin -- astro-let's do open links / source
+# astrolin.org [![Build Status](https://secure.travis-ci.org/astrolet/astrolin.png)](http://travis-ci.org/astrolet/astrolin)
+
 
 >      grow astrology like the woods
 >      grow stronger with each tree
 
 
-## WHAT
+## WEB
 
-Served as [astrolin.org/](http://astrolin.org).
-
-Includes extra tests for [heck](https://github.com/orlin/heck).
-
-Also, a [little wiki](https://github.com/astrolet/astrolin/wiki) for all
-[the projects](https://github.com/astrolet).
-
-Coming-up: `astrolin install` command for complete setup.
-
-
-## SITE
-
-With the [npm](http://npmjs.org) prerequisite, do `npm install astrolin`.
+This is a [node.js](http://nodejs.org) web site.
+Fork / clone the project and `npm install` it.
 
     node server.js
 
 
-## TEST
+## DEV
 
-Fork / clone this project.
+Run `cake dev` or use [Katon](https://github.com/typicode/katon) to develop.
 
-Do `npm install` the `node_modules` package dependencies.
-
-Run `cake dev` to develop.
+I also use [statica](https://github.com/orlin/statica) for compass and livereload.
 
 Run `cake test` against a running server.
 
 
 ## LAW
 
-This is free and unencumbered public domain software. For more information,
-see <http://unlicense.org/> or the accompanying [UNLICENSE](http://astrolet.github.com/astrolin/UNLICENSE.html) file.
+This is free and unencumbered public domain software.
+For more information, see [UNLICENSE](http://unlicense.org).
 
 
 ## HOME
