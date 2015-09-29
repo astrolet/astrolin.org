@@ -104,7 +104,8 @@ app.configure ->
         if req.method is 'GET' or req.method is 'HEAD'
           next()
         else
-          heck.handler req, res, "Route '#{req.url}' not found, the '#{req.method}' method not allowed further.",
+          heck.handler req, res, "Route '#{req.url}' not found, \
+the '#{req.method}' method not allowed further.",
             405
 
   # Cloud9's vfs for static files
@@ -119,7 +120,8 @@ process.addListener 'uncaughtException', (err) ->
   util.puts "Uncaught Exception: #{err.toString()}"
 
 # Start the server.
-port = parseInt(process.env.PORT || 8001)
-host = process.env.IP || '127.0.0.1' # heroku config:add IP=0.0.0.0
+# heroku config:add IP=0.0.0.0 # for hosting with Heroku
+port = parseInt(process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 8001)
+host = process.env.OPENSHIFT_NODEJS_IP || process.env.IP || '127.0.0.1'
 app.listen port, host
 console.log "Astrolin has started on http://#{host}:#{port}"
