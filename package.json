@@ -38,9 +38,5 @@
 , "scripts": { "test": "cake -w 13 test" }
 , "os" : [ "!win32" ]
 , "engines" : { "node" : "0.10.x" }
-, "licenses":
-  [ { "type": "Unlicense"
-    , "url" : "http://unlicense.org/"
-    }
-  ]
+, "license": "Unlicense"
 }

@@ -1,10 +1,11 @@
 language: node_js
 node_js:
-  - 0.8
+  - 0.10
 branches:
 only:
   - master
   - active
+  - test
 before_script: PORT=8001 node server.js &
 notifications:
   email:
@@ -12,4 +13,3 @@ notifications:
       - admin@astrolet.net
     on_success: change
     on_failure: always
-
