@@ -31,3 +31,6 @@ results
 .settings.xml
 web/public/watch.*
 
+# Openshift
+.bundle
+
