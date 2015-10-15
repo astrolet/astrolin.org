@@ -5,11 +5,11 @@
 , "homepage": "http://astrolin.org"
 , "repository":
   { "type": "git"
-  , "url": "git://github.com/astrolet/astrolin.git"
+  , "url": "git://github.com/astrolet/astrolin.org.git"
   }
 , "bugs":
   { "mail": "support@astrolet.net"
-  , "url" : "https://github.com/astrolet/astrolin/issues"
+  , "url" : "https://github.com/astrolet/astrolin.org/issues"
   }
 , "author": "Orlin M Bozhinov <orlin@astrolet.net> (http://soundsapiens.com)"
 , "contributors": []
